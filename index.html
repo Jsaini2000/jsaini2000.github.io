@@ -1,0 +1,1529 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jatin Saini</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Jatin Saini, PharmD, PMP. Clinical AI, payer operations and drug access, with the essays and memos behind the work.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap">
+<style>
+/* Layout: abyssal terminal. A centered hero floats over a rotating particle orb; below it, left-weighted bands step through the teal surface stack (abyss canvas, kelp case cards, deep wells for writing, experience, contact and the reader). Single dark theme by design. */
+:root{
+  color-scheme: dark;
+  --abyss:#012624;
+  --deep:#011d1c;
+  --kelp:#003734;
+  --kelp-soft:rgba(3,81,75,.5);
+  --mist:#edfffe;
+  --platinum:#ffffff;
+  --silver:#bbc7c6;
+  --slate:#707777;
+  --phosphor:#fde9ff;
+  --teal:#00827c;
+  --teal-lit:#36b5ab;
+  --aqua:#cbfffc;
+  --on-light:#222222;
+  --line:rgba(255,255,255,.1);
+  --line-strong:rgba(255,255,255,.2);
+  --track:rgba(255,255,255,.06);
+  --glow:rgba(1,38,36,.85);
+  --grad-bio:linear-gradient(90deg,#00827c 0%,#cbfffc 100%);
+  --grad-aurora:linear-gradient(90deg,#cbfffc 0%,#edfffe 26.25%,#fffdfa 47.57%,#fad1ff 88.96%);
+
+  --font:'DM Sans', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-ui:Arial, system-ui, -apple-system, sans-serif;
+
+  --fs-caption:10px;
+  --fs-label:12px;
+  --fs-small:14px;
+  --fs-body:16px;
+  --fs-read:18px;
+  --fs-lead:clamp(17px,1.6vw,20px);
+  --fs-sub:clamp(20px,2vw,24px);
+  --fs-h3:24px;
+  --fs-h2:clamp(36px,5.2vw,61px);
+  --fs-display:clamp(44px,7.6vw,96px);
+  --fs-stat:clamp(46px,6.2vw,86px);
+
+  --r-card:16px;
+  --r-sm:6px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html:has(.reader[open]){overflow:hidden}
+body{margin:0;background:var(--abyss);color:var(--silver);font-family:var(--font);font-size:var(--fs-body);line-height:1.5;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit}
+p{margin:0}
+h1,h2,h3{margin:0;font-weight:500;color:var(--platinum);text-wrap:balance}
+:focus-visible{outline:2px solid var(--aqua);outline-offset:3px;border-radius:4px}
+section[id],footer[id]{scroll-margin-top:16px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
+
+.wrap{max-width:1312px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+@media (min-width:720px){.wrap{padding-left:max(40px,env(safe-area-inset-left,0px));padding-right:max(40px,env(safe-area-inset-right,0px))}}
+
+.eyebrow{font-size:var(--fs-label);font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--silver);line-height:1.4}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-ui);font-size:var(--fs-small);letter-spacing:.06em;text-transform:uppercase;line-height:1;border-radius:var(--r-sm);padding:16px 22px;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .2s ease,background-color .2s ease,border-color .2s ease}
+.btn svg{width:14px;height:14px}
+.btn-aurora{background:var(--grad-aurora);color:var(--on-light)}
+.btn-aurora:hover{transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--platinum);border-color:var(--line-strong)}
+.btn-ghost:hover{background:var(--kelp);border-color:var(--kelp)}
+.btn-sm{padding:10px 16px;font-size:13px}
+
+.arrow-btn{display:grid;place-items:center;width:32px;height:32px;flex:none;border:0;padding:0;border-radius:var(--r-sm);background:var(--kelp-soft);color:var(--platinum);text-decoration:none;cursor:pointer;transition:background-color .2s ease}
+.arrow-btn svg{width:14px;height:14px}
+
+/* Nav */
+.nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px;min-height:80px;position:relative;z-index:2}
+.brand{justify-self:start;display:inline-flex;align-items:center;gap:12px;text-decoration:none;color:var(--platinum);font-weight:500;font-size:var(--fs-body);letter-spacing:-.01em}
+.mark{width:28px;height:28px;color:var(--mist)}
+.nav-links{display:flex;gap:24px}
+.nav-links a{font-size:var(--fs-label);letter-spacing:.12em;text-transform:uppercase;color:var(--silver);text-decoration:none;transition:color .2s ease}
+.nav-links a:hover{color:var(--platinum)}
+.nav .btn{justify-self:end}
+@media (max-width:980px){.nav{grid-template-columns:1fr auto}.nav-links{display:none}}
+
+/* Hero */
+.hero{position:relative;overflow:hidden;isolation:isolate}
+#orb{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+.hero-inner{display:flex;flex-direction:column;align-items:center;text-align:center;gap:28px;padding-block:clamp(48px,8vw,120px) clamp(64px,9vw,136px)}
+.hero h1{font-size:var(--fs-display);line-height:1;letter-spacing:-.04em;max-width:22ch;text-shadow:0 0 36px var(--glow)}
+.dek{font-size:var(--fs-lead);line-height:1.5;color:var(--mist);max-width:36em;text-shadow:0 0 24px var(--glow)}
+.cta-row{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.hero-meta{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--silver);line-height:1.6}
+
+/* Lens toggle */
+.lens{display:inline-flex;align-items:center;gap:4px;padding:4px;border:1px solid var(--line-strong);border-radius:var(--r-sm);background:var(--deep)}
+.lens-label{font-size:var(--fs-caption);letter-spacing:.15em;text-transform:uppercase;color:var(--silver);padding-inline:10px 6px}
+.lens button{font-family:var(--font);font-size:var(--fs-label);font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--silver);background:transparent;border:0;border-radius:var(--r-sm);padding:9px 14px;cursor:pointer;transition:background-color .2s ease,color .2s ease}
+.lens button:hover{color:var(--platinum)}
+.lens button[aria-pressed="true"]{background:var(--kelp);color:var(--platinum)}
+
+/* Stats */
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;padding-block:0 clamp(56px,7vw,96px)}
+.stat{border-top:1px solid var(--line);padding-top:20px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.stat-num{font-size:var(--fs-stat);line-height:1;letter-spacing:-.046em;color:var(--phosphor);font-weight:500;font-variant-numeric:tabular-nums;display:flex;align-items:baseline;gap:.14em;white-space:nowrap}
+.stat-unit{font-size:.26em;letter-spacing:.04em;color:var(--silver);text-transform:uppercase}
+.stat-label{font-size:13px;letter-spacing:.055em;text-transform:uppercase;color:var(--mist);line-height:1.4;max-width:26ch}
+@media (max-width:900px){.stats{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:32px}}
+
+/* Bands and section heads */
+.band{padding-block:clamp(56px,8vw,112px)}
+.band-deep{background:var(--deep)}
+.band.tight{padding-top:0}
+.section-head{display:flex;flex-direction:column;gap:16px;max-width:780px}
+.section-head h2{font-size:var(--fs-h2);line-height:1;letter-spacing:-.04em}
+.section-head .lede{max-width:52ch}
+
+/* Lens section */
+.fit-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,5vw,80px);align-items:center}
+.fit-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px 32px}
+.fit-head .section-head{max-width:560px}
+.rows{list-style:none;margin:28px 0 0;padding:0;display:flex;flex-direction:column}
+.row{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 32px;gap:24px;align-items:start;padding:28px 24px;border-radius:var(--r-card);transition:background-color .25s ease}
+.row:not(:last-child)::after{content:"";position:absolute;left:24px;right:24px;bottom:0;height:1px;background:var(--line);transition:opacity .25s ease}
+.row:hover{background:var(--kelp)}
+.row:hover::after{opacity:0}
+.row:hover .arrow-btn{background:var(--teal)}
+.row-src{font-size:var(--fs-caption);letter-spacing:.15em;text-transform:uppercase;color:var(--silver);margin-bottom:10px}
+.row h3{font-size:var(--fs-h3);line-height:1.3;letter-spacing:-.02em}
+.row p.row-body{margin-top:10px;max-width:58ch}
+.row .arrow-btn::before{content:"";position:absolute;inset:0;border-radius:var(--r-card)}
+.fit-figure{margin:0;display:flex;flex-direction:column;gap:18px;align-items:center}
+.fit-figure figcaption{font-size:var(--fs-label);letter-spacing:.12em;text-transform:uppercase;color:var(--silver);text-align:center;max-width:36ch;line-height:1.5}
+.mol{width:100%;max-width:520px;height:auto;display:block;font-family:var(--font)}
+.mol .ring{fill:none;stroke:var(--line-strong);stroke-width:1.25}
+.mol .aromatic{fill:none;stroke:var(--line-strong);stroke-width:1.25;stroke-dasharray:3 6}
+.mol .node{fill:var(--silver)}
+.mol .bond{stroke:var(--line-strong);stroke-width:1.25;transition:stroke .4s ease}
+.mol .bond.on{stroke:var(--mist)}
+.mol .atom{fill:var(--abyss);stroke:var(--slate);stroke-width:1.5;transition:fill .4s ease,stroke .4s ease}
+.mol .atom.on{fill:var(--mist);stroke:var(--mist)}
+.mol .mol-label{fill:var(--slate);font-size:17px;font-weight:500;letter-spacing:.12em;transition:fill .4s ease}
+.mol .mol-label.on{fill:var(--platinum)}
+@media (max-width:980px){.fit-grid{grid-template-columns:1fr}.mol{max-width:440px}}
+@media (max-width:520px){.row{padding:24px 12px}.row:not(:last-child)::after{left:12px;right:12px}}
+
+/* Case cards */
+.card{background:var(--kelp);border-radius:var(--r-card);padding:clamp(22px,4vw,48px)}
+.case{display:flex;flex-direction:column;gap:clamp(32px,4vw,48px)}
+.case-head{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(20px,4vw,64px);align-items:end}
+.case-head h2{font-size:var(--fs-h2);line-height:1;letter-spacing:-.04em;margin-top:16px}
+.case-intro{max-width:52ch}
+.case-intro b{color:var(--mist);font-weight:500}
+@media (max-width:900px){.case-head{grid-template-columns:1fr}}
+
+.block-title{color:var(--platinum);font-size:20px;font-weight:500;letter-spacing:-.01em;line-height:1.3}
+.block-sub{margin-top:4px;font-size:var(--fs-small);color:var(--silver)}
+
+.intake{display:flex;flex-direction:column;gap:16px}
+.stack{display:flex;gap:2px;height:36px;border-radius:var(--r-sm);overflow:hidden}
+.seg{width:var(--w);height:100%;flex:0 1 auto}
+.seg.epa{background:var(--aqua)}
+.seg.clean{background:var(--teal-lit)}
+.seg.queue{background:var(--slate)}
+.legend{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 24px;font-size:13px;color:var(--mist);line-height:1.4}
+.legend li{display:inline-flex;align-items:center;gap:8px}
+.sw{width:12px;height:12px;border-radius:3px;display:inline-block;flex:none}
+.sw.epa{background:var(--aqua)}
+.sw.clean{background:var(--teal-lit)}
+.sw.queue{background:var(--slate)}
+.sw.lu{background:var(--silver)}
+.sw.eap{background:var(--teal-lit)}
+.sw.both{background:var(--phosphor)}
+
+.flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.step{position:relative;display:flex;flex-direction:column;gap:8px;background:var(--abyss);border:1px solid transparent;border-radius:var(--r-sm);padding:20px;min-width:0}
+.step:not(:last-child)::after{content:"";position:absolute;top:50%;right:-15px;width:14px;height:1px;background:var(--line-strong)}
+.step-n{font-size:var(--fs-caption);letter-spacing:.15em;text-transform:uppercase;color:var(--silver)}
+.step h3{font-size:18px;line-height:1.3;letter-spacing:-.01em}
+.step p{font-size:var(--fs-small);line-height:1.45}
+.step.constraint{border-color:rgba(253,233,255,.45)}
+.tag{align-self:flex-start;font-size:var(--fs-caption);font-weight:500;letter-spacing:.15em;text-transform:uppercase;background:var(--phosphor);color:var(--on-light);padding:4px 7px;border-radius:var(--r-sm);line-height:1.3}
+@media (max-width:980px){
+  .flow{grid-template-columns:1fr}
+  .step:not(:last-child)::after{top:100%;right:auto;left:32px;width:1px;height:15px}
+}
+
+.case-split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(24px,4vw,56px);align-items:start}
+.compare{display:flex;flex-direction:column;gap:18px;background:var(--abyss);border-radius:var(--r-card);padding:clamp(20px,3vw,32px)}
+.bar-row{display:grid;grid-template-columns:118px minmax(0,1fr) 36px;align-items:center;gap:14px}
+.bar-name{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--silver);line-height:1.3}
+.bar-track{height:28px;background:var(--track);border-radius:var(--r-sm);overflow:hidden}
+.bar{height:100%;border-radius:var(--r-sm)}
+.bar.base{background:var(--silver)}
+.bar.early{background:var(--slate)}
+.bar.after{background:var(--grad-bio)}
+.bar-val{font-size:28px;line-height:1;color:var(--platinum);font-variant-numeric:tabular-nums;text-align:right;letter-spacing:-.02em}
+.note{font-size:var(--fs-small);color:var(--silver)}
+
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 32px;margin:0}
+.facts > div{border-top:1px solid var(--line);padding-top:14px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.facts dt{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--silver)}
+.facts dd{margin:0;color:var(--mist);line-height:1.45}
+.facts dd b{font-weight:500;color:var(--platinum)}
+@media (max-width:900px){.case-split{grid-template-columns:1fr}}
+@media (max-width:560px){.facts{grid-template-columns:1fr}.bar-row{grid-template-columns:92px minmax(0,1fr) 28px;gap:10px}}
+
+.insight{border-top:1px solid var(--line);padding-top:28px;display:grid;grid-template-columns:minmax(0,3fr) minmax(0,9fr);gap:16px 24px}
+.insight .big{font-size:var(--fs-sub);line-height:1.3;letter-spacing:-.02em;color:var(--mist);max-width:44ch}
+.insight .big b{color:var(--phosphor);font-weight:500}
+@media (max-width:720px){.insight{grid-template-columns:1fr}}
+
+.case-foot{border-top:1px solid var(--line);padding-top:24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 24px}
+.case-foot-title{display:block;margin-top:6px;color:var(--platinum);font-size:18px;font-weight:500;line-height:1.35}
+
+/* Funnel */
+.funnel{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:26px}
+.f-row{display:grid;grid-template-columns:clamp(76px,13vw,150px) minmax(0,1fr);gap:clamp(14px,2vw,24px);align-items:start}
+.f-num{font-size:clamp(28px,4vw,48px);font-weight:500;line-height:.9;letter-spacing:-.04em;color:var(--platinum);font-variant-numeric:tabular-nums;text-align:right}
+.f-row.key .f-num{color:var(--phosphor)}
+.f-track{height:20px;background:var(--track);border-radius:var(--r-sm);overflow:hidden}
+.f-bar{height:100%;width:var(--w);background:var(--teal-lit);border-radius:var(--r-sm)}
+.f-row.key .f-bar{background:var(--phosphor)}
+.f-text{margin-top:10px;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px}
+.f-label{color:var(--mist)}
+.f-note{font-size:13px;color:var(--silver)}
+
+/* Class chart */
+.classes{margin:0;display:flex;flex-direction:column;gap:18px}
+.classes figcaption{display:flex;flex-direction:column;gap:14px}
+.cls{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.cls li{display:grid;grid-template-columns:minmax(120px,220px) minmax(0,1fr);gap:16px;align-items:center}
+.cls-name{font-size:var(--fs-small);color:var(--mist);text-align:right;line-height:1.3}
+.cls-track{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;min-width:0}
+.cls-bar{display:flex;gap:2px;height:20px;width:calc(var(--n) / 23 * 78%);min-width:8px;border-radius:4px;overflow:hidden}
+.cls-bar i{flex:var(--v) 1 0;height:100%}
+.cls-bar .lu{background:var(--silver)}
+.cls-bar .eap{background:var(--teal-lit)}
+.cls-bar .both{background:var(--phosphor)}
+.cls-n{font-size:var(--fs-small);color:var(--platinum);font-variant-numeric:tabular-nums}
+.cls-note{font-size:12px;color:var(--silver)}
+@media (max-width:600px){.cls li{grid-template-columns:1fr;gap:6px}.cls-name{text-align:left}.cls-bar{width:calc(var(--n) / 23 * 72%)}}
+
+.readout{font-size:var(--fs-sub);line-height:1.3;letter-spacing:-.02em;color:var(--mist);max-width:44ch}
+.readout b{color:var(--phosphor);font-weight:500}
+
+/* Writing */
+.writing-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:clamp(32px,4vw,56px)}
+.piece{background:var(--deep);border-radius:var(--r-card);padding:clamp(24px,3.5vw,44px);display:flex;flex-direction:column;gap:20px;min-width:0}
+.piece h3{font-size:clamp(26px,3vw,36px);line-height:1.05;letter-spacing:-.03em}
+.piece-open{color:var(--mist);line-height:1.6;max-width:60ch}
+.piece .btn{margin-top:auto;align-self:flex-start}
+@media (max-width:900px){.writing-grid{grid-template-columns:1fr}}
+
+/* Experience */
+.exp-grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(32px,6vw,96px);align-items:start}
+.exp-head{position:sticky;top:32px}
+.timeline{list-style:none;margin:0;padding:0}
+.job{display:grid;grid-template-columns:150px minmax(0,1fr);gap:24px;padding-block:28px;border-top:1px solid var(--line)}
+.job:first-child{border-top:0;padding-top:0}
+.job-when{display:flex;flex-direction:column;align-items:flex-start;gap:10px;font-size:var(--fs-label);letter-spacing:.08em;text-transform:uppercase;color:var(--silver);font-variant-numeric:tabular-nums;padding-top:5px}
+.pill{font-size:var(--fs-caption);font-weight:500;letter-spacing:.15em;padding:5px 8px;border-radius:var(--r-sm);background:var(--kelp);color:var(--mist);line-height:1.2}
+.job h3{font-size:var(--fs-h3);line-height:1.3;letter-spacing:-.02em}
+.job-org{color:var(--mist);font-size:var(--fs-small);margin-top:6px}
+.job-sub{font-size:13px;color:var(--silver);margin-top:4px;font-style:italic}
+.job ul{margin:14px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:8px;max-width:64ch}
+.job li::marker{color:var(--slate)}
+@media (max-width:980px){.exp-grid{grid-template-columns:1fr}.exp-head{position:static}}
+@media (max-width:600px){.job{grid-template-columns:1fr;gap:10px}.job-when{flex-direction:row;align-items:center;flex-wrap:wrap}}
+
+/* Credentials */
+.cred-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,80px);margin-top:clamp(32px,4vw,56px)}
+.list-title{font-size:var(--fs-label);letter-spacing:.12em;text-transform:uppercase;color:var(--mist);font-weight:500;margin-bottom:12px}
+.cred-list{list-style:none;margin:0;padding:0}
+.cred-list li{display:grid;grid-template-columns:88px minmax(0,1fr);gap:20px;padding-block:20px;border-top:1px solid var(--line)}
+.cred-when{font-size:var(--fs-label);letter-spacing:.08em;text-transform:uppercase;color:var(--silver);font-variant-numeric:tabular-nums;padding-top:4px}
+.cred-name{color:var(--platinum);font-size:18px;line-height:1.35;font-weight:500}
+.cred-meta{font-size:var(--fs-small);margin-top:6px}
+.tools{margin:0}
+.tool-row{display:grid;grid-template-columns:120px minmax(0,1fr);gap:20px;padding-block:20px;border-top:1px solid var(--line)}
+.tool-row dt{font-size:var(--fs-label);letter-spacing:.08em;text-transform:uppercase;color:var(--silver);padding-top:6px}
+.tool-row dd{margin:0;min-width:0}
+.chips{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.chips li{background:var(--kelp);color:var(--mist);font-size:13px;line-height:1.3;padding:6px 10px;border-radius:var(--r-sm)}
+@media (max-width:900px){.cred-grid{grid-template-columns:1fr}}
+@media (max-width:480px){.tool-row,.cred-list li{grid-template-columns:1fr;gap:10px}}
+
+/* Beyond */
+.beyond{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(28px,5vw,72px);margin-top:20px}
+.beyond-main{display:grid;grid-template-columns:auto minmax(0,1fr);gap:20px 32px;align-items:start}
+.beyond h3{font-size:var(--fs-h3);line-height:1.3;letter-spacing:-.02em}
+.beyond p.body{margin-top:10px;max-width:56ch}
+.beyond-side{border-left:1px solid var(--line);padding-left:clamp(20px,3vw,40px)}
+.plain-list{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;gap:10px;color:var(--mist)}
+@media (max-width:900px){.beyond{grid-template-columns:1fr}.beyond-side{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:24px}}
+@media (max-width:560px){.beyond-main{grid-template-columns:1fr}}
+
+/* Contact */
+.contact{background:var(--deep);overflow:hidden;padding-top:clamp(80px,10vw,120px)}
+.contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,80px);align-items:end}
+.contact h2{font-size:clamp(32px,4.4vw,52px);line-height:1.05;letter-spacing:-.035em;margin-top:16px}
+.contact-cta{margin-top:32px}
+.contact-list{display:flex;flex-direction:column}
+.contact-item{display:grid;grid-template-columns:96px minmax(0,1fr) auto;gap:16px;align-items:center;padding-block:18px;border-top:1px solid var(--line)}
+.contact-item:last-child{border-bottom:1px solid var(--line)}
+.contact-val{color:var(--platinum);font-size:18px;overflow-wrap:anywhere;text-decoration:none}
+a.contact-val:hover{text-decoration:underline;text-underline-offset:4px}
+#email-text{user-select:all}
+.kinetic{font-size:15vw;line-height:.82;letter-spacing:-.046em;color:var(--kelp);font-weight:500;white-space:nowrap;text-align:center;margin:clamp(64px,9vw,112px) 0 0;user-select:none}
+.foot-meta{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-block:22px;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--silver)}
+@media (max-width:900px){.contact-grid{grid-template-columns:1fr}}
+@media (max-width:560px){.contact-item{grid-template-columns:minmax(0,1fr) auto;gap:8px 16px}.contact-item .eyebrow{grid-column:1/-1}}
+
+/* Reader */
+.reader{position:fixed;inset:0;z-index:100;width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:0;border:0;background:var(--deep);color:var(--silver);overflow:hidden}
+.reader::backdrop{background:var(--deep)}
+.reader-scroll{height:100%;overflow-y:auto;overscroll-behavior:contain}
+.reader-bar{position:sticky;top:0;z-index:1;background:var(--deep);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+.reader-bar-inner,.reader-body{max-width:800px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+@media (min-width:720px){.reader-bar-inner,.reader-body{padding-left:max(40px,env(safe-area-inset-left,0px));padding-right:max(40px,env(safe-area-inset-right,0px))}}
+.reader-bar-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px}
+.reader-body{padding-block:clamp(36px,6vw,64px) clamp(80px,10vw,128px)}
+.reader-body h1{font-size:clamp(32px,5vw,52px);line-height:1.05;letter-spacing:-.035em}
+.byline{margin-top:18px;font-size:var(--fs-label);letter-spacing:.12em;text-transform:uppercase;color:var(--silver)}
+.prose{margin-top:40px;font-size:var(--fs-read);line-height:1.65;color:var(--mist)}
+.prose > * + *{margin-top:1.1em}
+.prose > h2{margin-top:2.2em;font-size:var(--fs-h3);line-height:1.3;letter-spacing:-.02em;color:var(--platinum)}
+.prose > h3{margin-top:2em;font-size:var(--fs-label);letter-spacing:.12em;text-transform:uppercase;color:var(--silver);font-weight:500}
+.prose > h2 + *,.prose > h3 + *{margin-top:.8em}
+.prose a{color:var(--aqua);text-underline-offset:3px}
+.prose strong{color:var(--platinum);font-weight:500}
+.prose ul{padding-left:22px;display:flex;flex-direction:column;gap:.5em}
+.prose li::marker{color:var(--slate)}
+.prose li p{margin:0}
+.prose .chart-slot{background:var(--abyss);border-radius:var(--r-card);padding:clamp(18px,3vw,28px);font-size:var(--fs-body);line-height:1.5;color:var(--silver)}
+.prose .chart-source{font-size:var(--fs-label);color:var(--silver);line-height:1.5;margin-top:.7em}
+.table-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r-sm)}
+.prose table{width:100%;border-collapse:collapse;font-size:var(--fs-small);line-height:1.45;min-width:560px}
+.prose th{text-align:left;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--silver);font-weight:500;padding:12px 14px;background:var(--abyss);vertical-align:bottom}
+.prose td{padding:12px 14px;border-top:1px solid var(--line);vertical-align:top;color:var(--mist);font-variant-numeric:tabular-nums}
+.reader-end{margin-top:56px;padding-top:28px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center}
+</style>
+</head>
+<body>
+
+
+<header class="nav wrap">
+  <a class="brand" href="#top" aria-label="Jatin Saini, back to top">
+    <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><polygon points="16,3 27.26,9.5 27.26,22.5 16,29 4.74,22.5 4.74,9.5" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="16" cy="16" r="5.5" fill="none" stroke="currentColor" stroke-width="1.2"/><circle cx="16" cy="3" r="2.2" fill="currentColor"/></svg>
+    <span>Jatin Saini</span>
+  </a>
+  <nav class="nav-links" aria-label="Sections">
+    <a href="#lens">Lens</a>
+    <a href="#work">Work</a>
+    <a href="#writing">Writing</a>
+    <a href="#experience">Experience</a>
+    <a href="#credentials">Credentials</a>
+  </nav>
+  <a class="btn btn-aurora btn-sm" href="#contact">Contact</a>
+</header>
+
+<main>
+<section class="hero" id="top">
+  <canvas id="orb" aria-hidden="true"></canvas>
+  <div class="hero-inner wrap">
+    <p class="eyebrow">Clinical AI &middot; Payer operations &middot; Drug access</p>
+    <h1>A pharmacist who ships AI into regulated health.</h1>
+    <div class="lens" role="group" aria-label="Choose a lens for this page">
+      <span class="lens-label">Lens</span>
+      <button type="button" data-lens="clinical" aria-pressed="true">Clinical</button>
+      <button type="button" data-lens="strategy" aria-pressed="false">Strategy</button>
+    </div>
+    <p class="dek" data-for="clinical">I&rsquo;m a pharmacist first. I follow what happens to a patient when a criterion, a form or a supply chain fails, and I build tools that hold up under clinical review.</p>
+    <p class="dek" data-for="strategy" hidden>I look for the constraint that actually binds. In prior authorization it was intake. In drug access it is supply concentration meeting coverage rules. Then I build the fix and measure it.</p>
+    <div class="cta-row">
+      <a class="btn btn-aurora" href="#work">See the work
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M3.5 8.5 8 13l4.5-4.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+      </a>
+      <a class="btn btn-ghost" href="#writing">Read the writing</a>
+    </div>
+    <p class="hero-meta">PharmD &middot; PMP &middot; Licensed pharmacist in Ontario &middot; Toronto</p>
+  </div>
+</section>
+
+<section class="stats wrap" aria-label="Selected figures">
+  <div class="stat">
+    <p class="stat-num">~95%</p>
+    <p class="stat-label">Of prior-auth requests arrived by fax or email</p>
+  </div>
+  <div class="stat">
+    <p class="stat-num">3<span class="stat-unit">min</span></p>
+    <p class="stat-label">Per assisted review at handover, from 8 in week one</p>
+  </div>
+  <div class="stat">
+    <p class="stat-num">&asymp;$25M</p>
+    <p class="stat-label">Annual drug spend appraised on P&amp;T</p>
+  </div>
+  <div class="stat">
+    <p class="stat-num">187</p>
+    <p class="stat-label">Restricted single-supplier markets with a shortage report</p>
+  </div>
+</section>
+
+<section class="band" id="lens">
+  <div class="wrap fit-grid">
+    <div>
+      <div class="fit-head">
+        <div class="section-head">
+          <p class="eyebrow">Lens</p>
+          <h2 data-for="clinical">What the patient and prescriber run into</h2>
+          <h2 data-for="strategy" hidden>Where the leverage sits</h2>
+        </div>
+        <div class="lens" role="group" aria-label="Choose a lens for this section">
+          <button type="button" data-lens="clinical" aria-pressed="true">Clinical</button>
+          <button type="button" data-lens="strategy" aria-pressed="false">Strategy</button>
+        </div>
+      </div>
+
+      <ul class="rows" data-for="clinical">
+        <li class="row">
+          <div>
+            <p class="row-src">From the essay</p>
+            <h3>A blank field reads as a failed criterion</h3>
+            <p class="row-body">When a prescriber writes in the margin instead of ticking a box, extraction returns nothing and the rules engine treats that absence as failure. Annotating each question together with its answer fixed more than any prompt change did.</p>
+          </div>
+          <button type="button" class="arrow-btn" data-open="genai-prior-auth" aria-label="Read the essay on GenAI in prior authorization"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+        </li>
+        <li class="row">
+          <div>
+            <p class="row-src">From the essay</p>
+            <h3>Every denial goes to a person</h3>
+            <p class="row-body">Approval letters could be drafted for a reviewer to check and send. Denials were always reviewed in full, because the likeliest cause of a denial was a document that failed extraction.</p>
+          </div>
+          <button type="button" class="arrow-btn" data-open="genai-prior-auth" aria-label="Read the essay on GenAI in prior authorization"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+        </li>
+        <li class="row">
+          <div>
+            <p class="row-src">From the memo</p>
+            <h3>One supplier means no easy switch</h3>
+            <p class="row-body">When a single-supplier drug goes short, there is no interchangeable product to dispense. The patient needs a different drug, strength or form and a new prescription, and a restricted alternative needs its own authorization.</p>
+          </div>
+          <button type="button" class="arrow-btn" data-open="shortage-memo" aria-label="Read the memo on drug shortages and prior authorization"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+        </li>
+        <li class="row">
+          <div>
+            <p class="row-src">From the essay</p>
+            <h3>Faster review, same override rate</h3>
+            <p class="row-body">Review time fell while override rates held flat. Complex cases were re-reviewed blind by a second pharmacist, and a growing golden set was rerun monthly to catch drift.</p>
+          </div>
+          <button type="button" class="arrow-btn" data-open="genai-prior-auth" aria-label="Read the essay on GenAI in prior authorization"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+        </li>
+      </ul>
+
+      <ul class="rows" data-for="strategy" hidden>
+        <li class="row">
+          <div>
+            <p class="row-src">From the essay</p>
+            <h3>Ingestion sets the ceiling</h3>
+            <p class="row-body">About 95% of requests arrived by fax or email, and roughly 30% of those extracted cleanly enough to automate. The model was the easy part.</p>
+          </div>
+          <button type="button" class="arrow-btn" data-open="genai-prior-auth" aria-label="Read the essay on GenAI in prior authorization"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+        </li>
+        <li class="row">
+          <div>
+            <p class="row-src">From the essay</p>
+            <h3>Sequence on form structure</h3>
+            <p class="row-body">We rolled out by clinical complexity. The better order starts with the drug whose form has the most checkboxes, the most stable criteria and the least free text.</p>
+          </div>
+          <button type="button" class="arrow-btn" data-open="genai-prior-auth" aria-label="Read the essay on GenAI in prior authorization"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+        </li>
+        <li class="row">
+          <div>
+            <p class="row-src">From the essay</p>
+            <h3>Price the retrain</h3>
+            <p class="row-body">Every P&amp;T decision or guideline revision changes a form, and extraction has to relearn it from live submissions. One guideline change took about two quarters to recover from.</p>
+          </div>
+          <button type="button" class="arrow-btn" data-open="genai-prior-auth" aria-label="Read the essay on GenAI in prior authorization"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+        </li>
+        <li class="row">
+          <div>
+            <p class="row-src">From the memo</p>
+            <h3>Restriction is the unmeasured layer</h3>
+            <p class="row-body">Earlier studies measured whether drugs are listed. The memo counts restricted tiers inside single-supplier markets, and maps where the data to go further is held.</p>
+          </div>
+          <button type="button" class="arrow-btn" data-open="shortage-memo" aria-label="Read the memo on drug shortages and prior authorization"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+        </li>
+      </ul>
+    </div>
+
+    <figure class="fit-figure">
+      <svg class="mol" viewBox="0 0 600 445" role="img" aria-labelledby="mol-t">
+        <title id="mol-t">A six-atom ring of disciplines: clinical, AI product, data, strategy, regulatory and payer. The highlighted atoms change with the lens.</title>
+        <polygon class="ring" points="300,125 386.6,175 386.6,275 300,325 213.4,275 213.4,175"/>
+        <circle class="aromatic" cx="300" cy="225" r="58"/>
+        <line class="bond on" data-d="clinical" x1="300" y1="125" x2="300" y2="67"/>
+        <line class="bond" data-d="ai" x1="386.6" y1="175" x2="436.8" y2="146"/>
+        <line class="bond on" data-d="data" x1="386.6" y1="275" x2="436.8" y2="304"/>
+        <line class="bond" data-d="strategy" x1="300" y1="325" x2="300" y2="383"/>
+        <line class="bond on" data-d="regulatory" x1="213.4" y1="275" x2="163.2" y2="304"/>
+        <line class="bond on" data-d="payer" x1="213.4" y1="175" x2="163.2" y2="146"/>
+        <circle class="node" cx="300" cy="125" r="4"/>
+        <circle class="node" cx="386.6" cy="175" r="4"/>
+        <circle class="node" cx="386.6" cy="275" r="4"/>
+        <circle class="node" cx="300" cy="325" r="4"/>
+        <circle class="node" cx="213.4" cy="275" r="4"/>
+        <circle class="node" cx="213.4" cy="175" r="4"/>
+        <circle class="atom on" data-d="clinical" cx="300" cy="67" r="10"/>
+        <circle class="atom" data-d="ai" cx="436.8" cy="146" r="10"/>
+        <circle class="atom on" data-d="data" cx="436.8" cy="304" r="10"/>
+        <circle class="atom" data-d="strategy" cx="300" cy="383" r="10"/>
+        <circle class="atom on" data-d="regulatory" cx="163.2" cy="304" r="10"/>
+        <circle class="atom on" data-d="payer" cx="163.2" cy="146" r="10"/>
+        <text class="mol-label on" data-d="clinical" x="300" y="36" text-anchor="middle">CLINICAL</text>
+        <text class="mol-label" data-d="ai" x="458" y="146" dominant-baseline="middle">AI PRODUCT</text>
+        <text class="mol-label on" data-d="data" x="458" y="304" dominant-baseline="middle">DATA</text>
+        <text class="mol-label" data-d="strategy" x="300" y="424" text-anchor="middle">STRATEGY</text>
+        <text class="mol-label on" data-d="regulatory" x="142" y="304" text-anchor="end" dominant-baseline="middle">REGULATORY</text>
+        <text class="mol-label on" data-d="payer" x="142" y="146" text-anchor="end" dominant-baseline="middle">PAYER</text>
+      </svg>
+      <figcaption data-for="clinical">Clinical lens: clinical, regulatory, payer and data</figcaption>
+      <figcaption data-for="strategy" hidden>Strategy lens: strategy, AI product, payer and data</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="band" id="work">
+  <div class="wrap">
+    <article class="card case">
+      <header class="case-head">
+        <div>
+          <p class="eyebrow">Product &middot; GreenShield Canada &middot; 2025&ndash;26</p>
+          <h2>Clinical AI for prior authorization, live in three drug classes.</h2>
+        </div>
+        <p class="case-intro">I was product owner for a multi-agent decision-support platform at a Canadian benefits payer and took it to production for <b>Botox in migraine, GLP-1s and psoriasis biologics</b>. I wrote the clinical criteria decomposition and coded the rules engine in .NET.</p>
+      </header>
+
+      <div class="intake">
+        <div>
+          <p class="block-title">Where requests go before a model sees them</p>
+          <p class="block-sub">Share of all prior-authorization requests, approximate</p>
+        </div>
+        <div class="stack" role="img" aria-label="Under 5% of requests arrive by electronic prior authorization, about 28% arrive by fax or email and extract cleanly, and about 67% arrive by fax or email and land in a human queue.">
+          <span class="seg epa" style="--w:5%"></span><span class="seg clean" style="--w:28%"></span><span class="seg queue" style="--w:67%"></span>
+        </div>
+        <ul class="legend">
+          <li><i class="sw epa"></i>Electronic PA, under 5%</li>
+          <li><i class="sw clean"></i>Fax or email, clean enough to automate, ~28%</li>
+          <li><i class="sw queue"></i>Fax or email, to a human queue, ~67%</li>
+        </ul>
+      </div>
+
+      <ol class="flow" aria-label="How a prior-authorization case moves through the platform">
+        <li class="step constraint">
+          <span class="step-n">Step 1</span>
+          <h3>Intake</h3>
+          <p>About 95% of requests arrive by fax or email.</p>
+          <span class="tag">Binding constraint</span>
+        </li>
+        <li class="step">
+          <span class="step-n">Step 2</span>
+          <h3>Extraction</h3>
+          <p>OCR regions turn the form into JSON. Values count at 80% confidence or above.</p>
+        </li>
+        <li class="step">
+          <span class="step-n">Step 3</span>
+          <h3>Rules engine</h3>
+          <p>A deterministic first pass on patient, criteria and prescriber sections.</p>
+        </li>
+        <li class="step">
+          <span class="step-n">Step 4</span>
+          <h3>Model review</h3>
+          <p>Per-criterion prompts, with PHI scrubbed on the way out and reattached on return.</p>
+        </li>
+        <li class="step">
+          <span class="step-n">Step 5</span>
+          <h3>Pharmacist decides</h3>
+          <p>Sees each rule&rsquo;s result and rationale. Denials are always reviewed in full.</p>
+        </li>
+      </ol>
+
+      <div class="case-split">
+        <div class="compare">
+          <div>
+            <p class="block-title">Minutes per review</p>
+            <p class="block-sub">Timestamped per case in the review portal</p>
+          </div>
+          <div class="bar-row">
+            <span class="bar-name">Unassisted</span>
+            <div class="bar-track"><div class="bar base" style="width:62.5%"></div></div>
+            <span class="bar-val">5</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-name">Assisted, week one</span>
+            <div class="bar-track"><div class="bar early" style="width:100%"></div></div>
+            <span class="bar-val">8</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-name">Assisted, at handover</span>
+            <div class="bar-track"><div class="bar after" style="width:37.5%"></div></div>
+            <span class="bar-val">3</span>
+          </div>
+          <p class="note">About 10 reviewers handling 500+ cases a day.</p>
+        </div>
+        <dl class="facts">
+          <div><dt>In production</dt><dd><b>3 of 5</b> scoped drug classes, including GLP-1s for weight management and type 2 diabetes</dd></div>
+          <div><dt>Hallucination</dt><dd><b>~0.5%</b> on ~1,000 live cases, adjudicated by three people</dd></div>
+          <div><dt>Clinician overrides</dt><dd><b>Flat</b> while review time fell</dd></div>
+          <div><dt>Agreement on approvals</dt><dd><b>Mid-to-high 90s</b>, measured on the share of fax volume the system can reach</dd></div>
+          <div><dt>Workforce</dt><dd><b>~3 FTE</b> of approved hiring avoided, with no roles cut</dd></div>
+          <div><dt>Reuse</dt><dd>The delivery template now guides <b>3 more</b> legacy-workflow modernizations</dd></div>
+        </dl>
+      </div>
+
+      <div class="insight">
+        <p class="eyebrow">What I learned</p>
+        <p class="big" data-for="clinical">A denial was more likely to mean a misread form than an ineligible patient. That is why every denial stayed with a pharmacist.</p>
+        <p class="big" data-for="strategy" hidden>The ceiling is set by how prescribers submit. A vendor who can tune its model but cannot edit the client&rsquo;s form is competing on a variable that was never binding.</p>
+      </div>
+
+      <footer class="case-foot">
+        <p><span class="eyebrow">Written up as</span><span class="case-foot-title">What Actually Breaks When You Put GenAI into Prior Authorization</span></p>
+        <button type="button" class="btn btn-ghost btn-sm" data-open="genai-prior-auth">Read the essay &middot; 8 min</button>
+      </footer>
+    </article>
+  </div>
+</section>
+
+<section class="band tight" id="access">
+  <div class="wrap">
+    <article class="card case">
+      <header class="case-head">
+        <div>
+          <p class="eyebrow">Research &middot; Independent &middot; Sep 2026 &ndash; now</p>
+          <h2>Where a drug shortage meets a prior authorization.</h2>
+        </div>
+        <p class="case-intro">A Canada-wide dataset that crosses supply concentration with what a prescriber must do to get a drug dispensed on Ontario&rsquo;s public plan. <b>Every choice that shapes a number was written down before the result it affects was seen.</b></p>
+      </header>
+
+      <div>
+        <p class="block-title">One supplier, restricted, short: 187 of 4,465 markets</p>
+        <p class="block-sub">Canadian drug markets on 2 Sep 2026 &middot; restriction on Ontario&rsquo;s public plan &middot; shortage reports since 2017</p>
+      </div>
+      <ol class="funnel" id="chart-funnel" aria-label="From 4,465 drug markets to 187 restricted single-supplier markets with a shortage report">
+        <li class="f-row">
+          <span class="f-num">4,465</span>
+          <div>
+            <div class="f-track"><div class="f-bar" style="--w:100%"></div></div>
+            <div class="f-text"><span class="f-label">Drug markets marketed in Canada</span></div>
+          </div>
+        </li>
+        <li class="f-row">
+          <span class="f-num">2,835</span>
+          <div>
+            <div class="f-track"><div class="f-bar" style="--w:63.49%"></div></div>
+            <div class="f-text"><span class="f-label">Supplied by one company, after resolving parents</span><span class="f-note">63% of the stage above</span></div>
+          </div>
+        </li>
+        <li class="f-row">
+          <span class="f-num">634</span>
+          <div>
+            <div class="f-track"><div class="f-bar" style="--w:14.2%"></div></div>
+            <div class="f-text"><span class="f-label">Restricted on the ODB: Limited Use or EAP only</span><span class="f-note">22% of the stage above</span></div>
+          </div>
+        </li>
+        <li class="f-row key">
+          <span class="f-num">187</span>
+          <div>
+            <div class="f-track"><div class="f-bar" style="--w:4.19%"></div></div>
+            <div class="f-text"><span class="f-label">Had a reported shortage since 2017</span><span class="f-note">29% of the stage above &middot; 108 molecules</span></div>
+          </div>
+        </li>
+      </ol>
+
+      <p class="readout" data-for="clinical">For the 108 molecules in those <b>187</b> markets, a patient can neither switch product nor get approved quickly.</p>
+      <p class="readout" data-for="strategy" hidden>Listing has been measured; restriction has not. Sizing the <b>187</b> needs claims data, purchase audits and private formularies, none of it public.</p>
+
+      <figure class="classes" id="chart-classes">
+        <figcaption>
+          <span><span class="block-title" style="display:block">The gate differs by class</span><span class="block-sub" style="display:block">108 exposed molecules by therapeutic class and Ontario access tier</span></span>
+          <ul class="legend">
+            <li><i class="sw lu"></i>Limited Use 57</li>
+            <li><i class="sw eap"></i>EAP 49</li>
+            <li><i class="sw both"></i>Both, by strength 2</li>
+          </ul>
+        </figcaption>
+        <ol class="cls">
+          <li><span class="cls-name">Nervous system</span><span class="cls-track"><span class="cls-bar" style="--n:23"><i class="lu" style="--v:10"></i><i class="eap" style="--v:12"></i><i class="both" style="--v:1"></i></span><span class="cls-n">23</span></span></li>
+          <li><span class="cls-name">Alimentary &amp; metabolism</span><span class="cls-track"><span class="cls-bar" style="--n:14"><i class="lu" style="--v:6"></i><i class="eap" style="--v:8"></i></span><span class="cls-n">14</span></span></li>
+          <li><span class="cls-name">Respiratory</span><span class="cls-track"><span class="cls-bar" style="--n:14"><i class="lu" style="--v:11"></i><i class="eap" style="--v:3"></i></span><span class="cls-n">14</span><span class="cls-note">11 of 14 Limited Use</span></span></li>
+          <li><span class="cls-name">Oncology &amp; immunology</span><span class="cls-track"><span class="cls-bar" style="--n:13"><i class="lu" style="--v:4"></i><i class="eap" style="--v:9"></i></span><span class="cls-n">13</span><span class="cls-note">9 of 13 EAP</span></span></li>
+          <li><span class="cls-name">Anti-infectives</span><span class="cls-track"><span class="cls-bar" style="--n:10"><i class="lu" style="--v:5"></i><i class="eap" style="--v:5"></i></span><span class="cls-n">10</span></span></li>
+          <li><span class="cls-name">Cardiovascular</span><span class="cls-track"><span class="cls-bar" style="--n:8"><i class="lu" style="--v:6"></i><i class="eap" style="--v:2"></i></span><span class="cls-n">8</span></span></li>
+          <li><span class="cls-name">Genito-urinary &amp; sex hormones</span><span class="cls-track"><span class="cls-bar" style="--n:6"><i class="lu" style="--v:3"></i><i class="eap" style="--v:2"></i><i class="both" style="--v:1"></i></span><span class="cls-n">6</span></span></li>
+          <li><span class="cls-name">Sensory organs</span><span class="cls-track"><span class="cls-bar" style="--n:6"><i class="lu" style="--v:5"></i><i class="eap" style="--v:1"></i></span><span class="cls-n">6</span></span></li>
+          <li><span class="cls-name">Dermatological</span><span class="cls-track"><span class="cls-bar" style="--n:4"><i class="lu" style="--v:4"></i></span><span class="cls-n">4</span></span></li>
+          <li><span class="cls-name">Systemic hormones</span><span class="cls-track"><span class="cls-bar" style="--n:4"><i class="lu" style="--v:1"></i><i class="eap" style="--v:3"></i></span><span class="cls-n">4</span></span></li>
+          <li><span class="cls-name">Other classes</span><span class="cls-track"><span class="cls-bar" style="--n:6"><i class="lu" style="--v:2"></i><i class="eap" style="--v:4"></i></span><span class="cls-n">6</span></span></li>
+        </ol>
+      </figure>
+
+      <dl class="facts">
+        <div><dt>Robustness</dt><dd><b>22&ndash;23%</b> restricted and <b>29&ndash;32%</b> with a shortage report, across three ways of drawing a market</dd></div>
+        <div><dt>Limits</dt><dd>A shortage report is not an empty shelf. <b>634</b> and <b>187</b> are floors, and restriction does not predict shortage</dd></div>
+        <div><dt>Sources</dt><dd>Health Canada DPD, ODB Formulary Edition 43, Ontario&rsquo;s EAP DIN list, Health Product Shortages Canada</dd></div>
+        <div><dt>Next</dt><dd>Testing a US rebuild on the FDA shortage list, NDC Directory, CMS Part D formularies and RxNorm</dd></div>
+      </dl>
+
+      <footer class="case-foot">
+        <p><span class="eyebrow">Written up as</span><span class="case-foot-title">Where a drug shortage meets a prior authorization</span></p>
+        <button type="button" class="btn btn-ghost btn-sm" data-open="shortage-memo">Read the memo &middot; 10 min</button>
+      </footer>
+    </article>
+  </div>
+</section>
+
+<section class="band tight" id="writing">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Writing</p>
+      <h2>Written from inside the work.</h2>
+    </div>
+    <div class="writing-grid">
+      <article class="piece">
+        <p class="eyebrow">Essay &middot; Sep 18, 2026 &middot; 8 min</p>
+        <h3>What Actually Breaks When You Put GenAI into Prior Authorization</h3>
+        <p class="piece-open">Roughly 95 percent of the prior authorization requests we received arrived as faxes or email attachments. Under 5 percent came through electronic prior authorization. Of the fax and email volume, about 30 percent produced structured data clean enough to route into the automated path. Everything else landed in a human queue before a model ever saw it.</p>
+        <button type="button" class="btn btn-ghost" data-open="genai-prior-auth">Read the essay
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+        </button>
+      </article>
+      <article class="piece">
+        <p class="eyebrow">Policy memo &middot; Oct 13, 2026 &middot; 10 min</p>
+        <h3>Where a drug shortage meets a prior authorization</h3>
+        <p class="piece-open">More than one in five single-supplier drug markets in Canada is restricted on Ontario&rsquo;s public formulary, and nearly three in ten of those have had a reported shortage since 2017. The memo traces owners to their parents, counts the restricted tiers DIN by DIN, and states what the numbers do not say.</p>
+        <button type="button" class="btn btn-ghost" data-open="shortage-memo">Read the memo
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+        </button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band band-deep" id="experience">
+  <div class="wrap exp-grid">
+    <div class="exp-head section-head">
+      <p class="eyebrow">Experience</p>
+      <h2>From the pharmacy counter to the product roadmap.</h2>
+      <p class="lede">Ten years across community and hospital pharmacy, a benefits payer, an expert network and independent research.</p>
+    </div>
+    <ol class="timeline">
+      <li class="job">
+        <div class="job-when"><span>Sep 2026 &ndash; Now</span><span class="pill">Current</span></div>
+        <div>
+          <h3>Independent Researcher, Access Fragility</h3>
+          <p class="job-org">Drug shortages &times; coverage restrictions &middot; Toronto, ON</p>
+          <ul>
+            <li>Built a Canada-wide dataset of 4,465 drug markets from public sources, resolving 336 licence holders to 323 parent companies to find true single-supplier markets.</li>
+            <li>Published a policy memo in October 2026. Now testing whether the method rebuilds on US public data.</li>
+          </ul>
+        </div>
+      </li>
+      <li class="job">
+        <div class="job-when"><span>Mar 2026 &ndash; Now</span><span class="pill">Current</span></div>
+        <div>
+          <h3>Expert Network Advisor, Healthcare &amp; Health Tech</h3>
+          <p class="job-org">Guidepoint &middot; Remote</p>
+          <ul>
+            <li>30+ paid consultations with institutional investors, private equity and strategy firms on Canadian payer and PBM economics, formulary and P&amp;T frameworks, biosimilar transitions, and the real-world viability of AI-enabled clinical products.</li>
+          </ul>
+        </div>
+      </li>
+      <li class="job">
+        <div class="job-when"><span>Sep 2025 &ndash; Aug 2026</span><span class="pill">Consultant to Dec 2026</span></div>
+        <div>
+          <h3>AI Specialist, Clinical Solutions &amp; Product</h3>
+          <p class="job-org">GreenShield Canada &middot; Toronto &amp; London, ON</p>
+          <p class="job-sub">12-month term appointment, continuing as an external consultant through December 2026</p>
+          <ul>
+            <li>Shipped AI clinical decision support for prior authorization in 3 of 5 scoped drug classes. Assisted review fell to about 3 minutes per case, against roughly 5 unassisted.</li>
+            <li>Owned the product end to end and coded the rules engine in .NET, leading 4 engineers, 8 clinical reviewers and compliance without formal authority.</li>
+            <li>Voting member of the P&amp;T committee, appraising manufacturer clinical and economic dossiers for categories worth &asymp;$25M a year.</li>
+            <li>Built SQL/Oracle analytics on real-world claims and a Retool evidence platform consolidating 200+ clinical and economic documents for 40+ decision-makers.</li>
+          </ul>
+        </div>
+      </li>
+      <li class="job">
+        <div class="job-when"><span>Sep 2024 &ndash; Sep 2025</span></div>
+        <div>
+          <h3>Clinical Pharmacist</h3>
+          <p class="job-org">GreenShield Canada</p>
+          <ul>
+            <li>Held service levels through ~2&times; prescription-volume growth with no added headcount (&asymp;1,200 scripts a week at peak, up to 30 transfers a day).</li>
+            <li>Co-designed and scaled a Chronic Disease Management Program serving 200+ patients a year.</li>
+          </ul>
+        </div>
+      </li>
+      <li class="job">
+        <div class="job-when"><span>Jul 2024 &ndash; Aug 2025</span></div>
+        <div>
+          <h3>Senior Reviewer, Clinical QA (contract)</h3>
+          <p class="job-org">Outlier.ai &middot; Remote</p>
+          <ul>
+            <li>2,000+ evaluations of AI-generated clinical outputs against structured safety criteria, informing model safety and accuracy improvements.</li>
+          </ul>
+        </div>
+      </li>
+      <li class="job">
+        <div class="job-when"><span>Feb &ndash; May 2024</span></div>
+        <div>
+          <h3>Medical &amp; Regulatory Intern</h3>
+          <p class="job-org">Haleon (formerly GSK Consumer Health) &middot; Mississauga, ON</p>
+          <ul>
+            <li>Contributed to a clinical summary report supporting a Health Canada new-product submission.</li>
+          </ul>
+        </div>
+      </li>
+      <li class="job">
+        <div class="job-when"><span>Nov 2023 &ndash; Feb 2024</span></div>
+        <div>
+          <h3>Pharmacy Student, Cannabis Consultation Service</h3>
+          <p class="job-org">Odette Cancer Centre, Sunnybrook</p>
+          <ul>
+            <li>Counselled oncology and chronic-disease patients within interprofessional care teams.</li>
+          </ul>
+        </div>
+      </li>
+      <li class="job">
+        <div class="job-when"><span>2016 &ndash; 2024</span></div>
+        <div>
+          <h3>Community &amp; Hospital Pharmacy</h3>
+          <p class="job-org">Shoppers Drug Mart &middot; LMC Diabetes &middot; Mackenzie Health</p>
+          <ul>
+            <li>Launched on-site diabetes clinics covering A1c testing, device teaching and medication reviews.</li>
+          </ul>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="band" id="credentials">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Credentials</p>
+      <h2>Pharmacology first. Business school next.</h2>
+    </div>
+    <div class="cred-grid">
+      <div>
+        <h3 class="list-title">Education &amp; certifications</h3>
+        <ul class="cred-list">
+          <li>
+            <span class="cred-when">2027</span>
+            <div><p class="cred-name">MBA, Smith School of Business, Queen&rsquo;s University</p><p class="cred-meta">Incoming candidate, Class of 2027 &middot; expected December 2027</p></div>
+          </li>
+          <li>
+            <span class="cred-when">2026</span>
+            <div><p class="cred-name">Project Management Professional (PMP), PMI</p><p class="cred-meta">Above Target in all domains</p></div>
+          </li>
+          <li>
+            <span class="cred-when">2024</span>
+            <div><p class="cred-name">Doctor of Pharmacy (PharmD), University of Toronto</p><p class="cred-meta">GPA 4.0/4.0, Honours &middot; Top 3 Business Plan &middot; Top 10 Industry Presentation &middot; Pharmacy P Award</p></div>
+          </li>
+          <li>
+            <span class="cred-when">2020</span>
+            <div><p class="cred-name">HBSc, Pharmacology &amp; Toxicology Specialist, University of Toronto</p><p class="cred-meta">GPA 3.93/4.0, Dean&rsquo;s List</p></div>
+          </li>
+          <li>
+            <span class="cred-when">Current</span>
+            <div><p class="cred-name">Licensed Pharmacist, Ontario College of Pharmacists</p></div>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="list-title">Toolkit</h3>
+        <dl class="tools">
+          <div class="tool-row">
+            <dt>AI &amp; product</dt>
+            <dd><ul class="chips"><li>Multi-agent GenAI (Copilot Studio)</li><li>Clinical decision-support logic</li><li>Rules engines (.NET)</li><li>Prompt engineering</li><li>AI evaluation &amp; safety review</li><li>Roadmap definition</li></ul></dd>
+          </div>
+          <div class="tool-row">
+            <dt>Data</dt>
+            <dd><ul class="chips"><li>SQL</li><li>Oracle</li><li>Python</li><li>RStudio</li><li>Real-world claims analytics</li><li>DPD, ODB, FDA, CMS Part D</li><li>Retool</li><li>UiPath</li></ul></dd>
+          </div>
+          <div class="tool-row">
+            <dt>Clinical &amp; domain</dt>
+            <dd><ul class="chips"><li>Prior authorization &amp; UM</li><li>Formulary &amp; coverage decisions</li><li>Drug shortage &amp; supply analysis</li><li>Evidence appraisal (BIA / CEA)</li><li>Health Canada regulatory alignment</li></ul></dd>
+          </div>
+          <div class="tool-row">
+            <dt>Platforms</dt>
+            <dd><ul class="chips"><li>Azure</li><li>Google Cloud</li><li>EPIC</li><li>Accuro</li></ul></dd>
+          </div>
+          <div class="tool-row">
+            <dt>Languages</dt>
+            <dd><ul class="chips"><li>English</li><li>Punjabi</li><li>Hindi</li><li>Urdu</li><li>French (intermediate)</li></ul></dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band tight" id="beyond">
+  <div class="wrap">
+    <div class="card">
+      <p class="eyebrow">Beyond the job</p>
+      <div class="beyond">
+        <div class="beyond-main">
+          <div class="stat" style="border-top:0;padding-top:0">
+            <p class="stat-num">300K+</p>
+            <p class="stat-label">Followers</p>
+          </div>
+          <div>
+            <h3>Founder &amp; Content Lead, StudywithAra</h3>
+            <p class="body">Built a health-education platform from scratch. Owned content strategy, audience analytics, brand positioning and partnership negotiation, closing $40K in brand partnerships across 12 deals.</p>
+          </div>
+        </div>
+        <div class="beyond-side">
+          <h3>Community</h3>
+          <ul class="plain-list">
+            <li>Pharmacy Dragon Boat</li>
+            <li>Industry Pharmacy Club</li>
+            <li>SickKids and Red Cross programming</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <p class="eyebrow">Contact</p>
+      <h2>Working on prior authorization, drug access or clinical AI? I&rsquo;d like to compare notes.</h2>
+      <a class="btn btn-aurora contact-cta" href="mailto:jsaini2000@gmail.com">Email Jatin
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+      </a>
+    </div>
+    <div class="contact-list">
+      <div class="contact-item">
+        <span class="eyebrow">Email</span>
+        <span class="contact-val" id="email-text">jsaini2000@gmail.com</span>
+        <button type="button" class="btn btn-ghost btn-sm" id="copy-email">Copy</button>
+      </div>
+      <div class="contact-item">
+        <span class="eyebrow">LinkedIn</span>
+        <a class="contact-val" href="https://www.linkedin.com/in/jatin-saini-pharmacy" target="_blank" rel="noopener">in/jatin-saini-pharmacy</a>
+        <a class="arrow-btn" href="https://www.linkedin.com/in/jatin-saini-pharmacy" target="_blank" rel="noopener" aria-label="Open LinkedIn profile"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></a>
+      </div>
+      <div class="contact-item">
+        <span class="eyebrow">Based in</span>
+        <span class="contact-val">Toronto, Ontario</span>
+      </div>
+    </div>
+  </div>
+  <p class="kinetic" aria-hidden="true">Jatin Saini</p>
+  <div class="wrap foot-meta">
+    <span>&copy; 2026 Jatin Saini</span>
+    <span>PharmD &middot; PMP &middot; Smith MBA &rsquo;27</span>
+  </div>
+</footer>
+
+<dialog class="reader" id="reader" aria-labelledby="reader-title">
+  <div class="reader-scroll" id="reader-scroll">
+    <div class="reader-bar">
+      <div class="reader-bar-inner">
+        <span class="eyebrow" id="reader-kind"></span>
+        <button type="button" class="btn btn-ghost btn-sm" id="reader-close">Close</button>
+      </div>
+    </div>
+    <article class="reader-body">
+      <h1 id="reader-title"></h1>
+      <p class="byline" id="reader-byline"></p>
+      <div class="prose" id="reader-content"></div>
+      <div class="reader-end">
+        <span class="eyebrow">Jatin Saini &middot; jsaini2000@gmail.com</span>
+        <button type="button" class="btn btn-ghost btn-sm" id="reader-close-2">Back to the site</button>
+      </div>
+    </article>
+  </div>
+</dialog>
+
+<template id="tpl-genai-prior-auth">
+<p>Roughly 95 percent of the prior authorization requests we received arrived as faxes or email attachments. Under 5 percent came through electronic prior authorization. Of the fax and email volume, about 30 percent produced structured data clean enough to route into the automated path. Everything else landed in a human queue before a model ever saw it.</p>
+<p>That arithmetic should frame every claim anyone makes about clinical AI in utilization management, including mine. I spent a year as product owner of a multi-agent decision-support platform for prior auth at a Canadian benefits payer, took it to production across three drug classes, and the thing I believed on day one that turned out to be wrong is that the model was the hard part. The model was the easy part. Ingestion was everything.</p>
+<h2>What the system actually was</h2>
+<p>The unit of work is the form, and the form is the schema. Our OCR vendor's annotation regions, tenant codes, define where on a document a given field is expected to live, and those codes determine the shape of the JSON that reaches everything downstream. An ePA (electronic prior authorization) submission converts to that structure natively, because the portal will not let a prescriber submit with fields empty. A fax has to be annotated, trained, and extracted, and the quality of that extraction is entirely a function of how much of that particular form you have seen.</p>
+<p>Once you have JSON, a rules engine runs first. I wrote the clinical criteria decomposition and coded the rules engine myself, in .NET, because the translation loss between a pharmacist explaining branch logic and an engineer implementing it is expensive and the round trip is slow. The engine is a cheap first pass: it checks the three sections that matter, patient information, clinical criteria, and prescriber information, and it resolves whatever can be resolved deterministically. If patient information is missing, the case never reaches a model at all, because there is no way to reattach the result to a member profile. It goes straight to the open queue.</p>
+<p>What survives goes to an orchestration partner running per-criterion prompts against the criteria I specified, with PHI scrubbed on the way out and reattached on the way back under provincial privacy requirements. The output is not a verdict. It is a per-rule breakdown: for each criterion, approved or denied, with the model's explanation of why, and then a final recommendation. A reviewer sees the rule level, not just the answer.</p>
+<p>The asymmetry between approvals and denials is worth stating plainly, because it is where most of the operational leverage sits. Approval recommendations carried further into the workflow: the correspondence template and the text snippets that a reviewer would otherwise select by hand were generated directly into the member letter, and the reviewer could send it if it looked right. Denials always landed on a human in full. The reason was not clinical risk. It was OCR risk. The most likely explanation for a denial is not that the patient failed criteria, it is that the document failed extraction.</p>
+<h2>Where it broke</h2>
+<p>The first failure mode is the one that cost us the most coverage and has nothing to do with clinical reasoning. A prescriber writes text where a checkbox belongs, or annotates in the margin outside the tenant code region, or uses a form structure the model has not seen enough of. The field comes back null. The rules engine reads absence of evidence as failure of criterion. A clinically clean case gets routed to denial on a document layout artifact.</p>
+<p>The fix is the most useful thing I learned all year, and it is not a prompting fix. If you annotate only the checkbox, extraction depends on the model reading a mark reliably, which it does not do well at low data volumes. If you instead annotate the label together with the answer token, so that the region covers "Do you have the disease? Yes" rather than the box alone, then the region only populates when that answer is selected. Presence of any extracted text becomes the signal. At the rules layer I can then pass the criterion on non-null rather than on a boolean I cannot trust. You solve an AI problem by changing the question, not the prompt. In hindsight several of those fields should have been optical mark recognition rather than OCR in the first place.</p>
+<p>The second failure mode is a trade with no free position on the curve. We only evaluated extracted values at 80 percent confidence or above. Above that threshold you discard evaluable data and suppress coverage. Below it you admit garbage into the pipeline and pay tokens to have a model reason carefully over a misread value. Both directions cost you. Any vendor claiming their extraction confidence threshold is a solved parameter has not run one in production.</p>
+<p>The third is structural and I will come back to it.</p>
+<p>What did not break, and this surprised me, was the model's clinical reasoning. Hallucination ran around 0.5 percent on a sampled set of roughly a thousand live cases, adjudicated by three people: the orchestration partner's AI engineer, me, and our director. When the system got a criterion wrong and the JSON was clean, tracing it almost always ended at a wrong parameter in an API call or at a criterion I had specified badly. We were running an o3-class model, which was overpowered for what we were asking, and was partly a consequence of a design choice I would reverse: a single failed rule sends the entire case to the model for full re-evaluation rather than dispatching at the rule level. Rule-level dispatch would have cut token cost substantially and let us use a smaller model.</p>
+<h2>What the numbers say and what they do not</h2>
+<p>The number I can defend completely is review time. Our portal timestamps assessment duration per case. In week one, reviewers were spending about 8 minutes on a bot-assisted assessment, against roughly 5 minutes on an unassisted one. By the time I left, bot-assisted assessments were running about 3 minutes, across roughly 10 reviewers and 500-plus cases per day, and climbing.</p>
+<p>The obvious objection is that a 60 percent drop in review time is not efficiency, it is deference. A reviewer who stops independently re-deriving the answer and starts reading the model's rationale and nodding will produce exactly that curve, and every case they wave through gets logged as agreement. That is the standard automation complacency finding and it deserves to be the first question anyone asks.</p>
+<p>Three things argue against it here. Override rate stayed flat while time fell, which is the measurement that actually distinguishes the two explanations. Complex cases were re-reviewed blind by a second pharmacist. And the golden set, which started at 30 human-adjudicated cases and expanded continuously from live data, was rerun monthly to test for drift independent of reviewer agreement. That is not proof, but it is a design that could have caught deference and did not.</p>
+<p>Agreement between model recommendation and reviewer disposition on approval recommendations ran in the mid-to-high 90s, blended across Botox for migraine, GLP-1s for both weight management and type 2 diabetes, and psoriasis biologics. State that number without its filter and it is close to meaningless, so here is the filter: it is measured on cases that already survived an 80 percent extraction confidence threshold and a rules engine pass, which is that 30 percent of the fax channel. It is the accuracy of the system on the part of the queue the system can reach.</p>
+<p>On headcount, nobody was cut. A commitment to the bargaining unit made that a non-starter. What happened instead was that an approved headcount increase disappeared, roughly 3 FTE of avoided hiring against three live forms. That is the realistic shape of labour impact in a unionized payer, and it sits in structural tension with a cost mandate that reports through an entirely different branch. Worth noting that the work left in the human queue gets harder, not easier, because what remains is the concentrated residue of mangled documents and grey-zone judgment. Per-case time should go up. That is the system working.</p>
+<h2>The requirement nobody prices</h2>
+<p>Here is the third failure mode, and it is the one I would put in front of a product team before they scope anything.</p>
+<p>Criteria are not static. A P&amp;T decision, a renegotiated listing agreement, or a guideline revision changes the clinical criteria, and that change forces a change to the form. Prompts are liquid: I could rewrite criteria logic the same day. The form is not. A new form means new tenant code positions, which means retraining extraction, which means waiting for prescribers to organically submit enough of the new form to train on. You cannot manufacture that data and you cannot schedule it. When the Botox migraine guidelines moved, getting back to previous automation levels took about two quarters.</p>
+<p>It is worse than a one-time migration, because prescribers download a form once and use it for the rest of their careers. You are never cutting over. You are running parallel extraction schemas and mapping old tenant codes to new rules indefinitely, with criteria tweaks where the old form and the current acceptance criteria no longer line up.</p>
+<p>None of that is Canadian. Every payer's criteria move. Every vendor ingesting faxes inherits this, and I have not seen anyone price the recurring retrain against the formulary cycle.</p>
+<h2>What I would do differently</h2>
+<p>Two things. Annotation was me and a rotation of students. I would trade a developer for a dedicated annotator without hesitating, because extraction quality scales with annotated volume more reliably than anything else we touched, and a developer cannot substitute for that.</p>
+<p>And I would sequence differently. We picked Botox for migraine first because its clinical criteria were clean, then GLP-1s because they carried the heaviest prior auth load. That is sequencing on clinical complexity, which is optimizing the wrong variable. If ingestion is the constraint, you sequence on form structure. Start with whichever drug has the most checkboxes, the most stable criteria, and the least free text, regardless of how interesting the clinical logic is.</p>
+<p>Which points at the uncomfortable conclusion. The ceiling on this entire category is set by prescriber submission behaviour. If you could move that channel, the rules engine alone would clear a large share of this volume at near-zero marginal cost and the model would be a rounding error in the architecture. We tried to move it, through pilots and direct onboarding, and it was the hardest thing we attempted. Changing prescriber practice is slower than changing anything in the stack.</p>
+<p>So the highest-leverage lever in the whole system is the ability to edit the form itself. I had it, narrowly, and used it: when a question was ambiguous or too broad, I could rewrite it into something narrower or restructure it as a boolean asking the same clinical thing, then wait for data and retrain. Most vendors selling into this space cannot do that. They can improve their models and they cannot touch their clients' forms, which means they are competing on the variable that was never binding.</p>
+</template>
+
+<template id="tpl-shortage-memo">
+<h2>The finding</h2>
+<p>More than one in five single-supplier drug markets in Canada is restricted on Ontario's public formulary, and nearly three in ten of those have had a reported shortage since 2017.</p>
+<p>Of 4,465 drug markets marketed in Canada on 2 September 2026, 2,835 are supplied by one company once subsidiaries are traced to their parents. Of those, 634 are Limited Use on the Ontario Drug Benefit (ODB) formulary or reachable only through the Exceptional Access Program (EAP). Of that restricted set, 187 markets, covering 108 molecules, have had a shortage report with an actual start date since 1 January 2017.</p>
+<div class="chart-slot" data-chart="funnel"></div>
+<p class="chart-source">DPD extract 2026-09-02 · ODB extract 2026-08-26 · EAP list 2026-10-05 · Health Product Shortages Canada reports to 2026-09-22</p>
+<p>A market is one active ingredient or combination, in one dosage form, by one route, at one strength. The 108 molecules are where a supply disruption and an authorization requirement compound: the patient can neither switch product nor get approved quickly.</p>
+<h2>Why it matters</h2>
+<p>A shortage of a multi-supplier product is usually absorbed at the pharmacy counter; a shortage of a single-supplier product is not. With several suppliers, the pharmacist dispenses another manufacturer's product that the ODB Formulary designates interchangeable under the Drug Interchangeability and Dispensing Fee Act: the same amount of the same ingredient in the same or similar dosage form (Formulary Edition 43, pp. 5, 8). With one, no other manufacturer markets the product, so the patient usually needs a different drug, strength or form, and a new prescription.</p>
+<p>Restriction means that getting the drug at all already took an authorization step. A Limited Use drug is paid only when the prescriber records a reason-for-use code the patient meets; an EAP drug only after the Ministry approves an individual request. When such a drug goes short, the prescriber must find an alternative that is both suitable and covered, and a restricted alternative needs a new authorization of its own.</p>
+<p>Ontario's formulary states the first half of this mechanism itself. Its Temporary Benefits, listed to respond to shortages, "are not interchangeable with the drug product in shortage. A new prescription may be required" (ODB Formulary, Edition 43, p. 31).</p>
+<h2>What is new</h2>
+<p>Listing has been measured; restriction has not. PMPRB's 2022 study of 307 CDR-reviewed medicines found Ontario listed 78% of the single-source ones as of June 2020, the highest rate among public plans. Zhang et al. (CMAJ Open, 2020) linked the Drug Product Database, formularies and shortage reports at this same market level across nine provinces.</p>
+<p>Neither crossed supply concentration with what a prescriber must do to get the drug dispensed. Santhireswaran et al. (2026) modelled how many of a drug's DINs the ODB covers, not the tier they sit in. This memo counts the restricted tiers directly, Limited Use and EAP, DIN by DIN, inside single-supplier markets.</p>
+<h2>Who controls supply</h2>
+<p>Tracing owners to their parents barely changes the count. The 336 companies holding DINs in scope resolve to 323 parent entities, which moves the single-supplier count by 4 markets, from 2,831 to 2,835.</p>
+<p>The largest merge joins two Québec generic makers, JAMP and Angita, which share 143 markets and are recorded under common control in the provincial and federal corporate registries. Even that merge leaves no market with a single supplier, because those generic markets carry other suppliers too; the four markets resolution does change come from Aurobindo and Viatris. Each merge rests on a documented ownership link checked by hand; a company with no confirmed parent stands alone.</p>
+<p>What the data cannot see runs the other way. Licensing deals, authorized generics and contract manufacturing are invisible in the DPD, so two "different" suppliers may make the same product in one plant. The single-supplier count is a floor on true concentration.</p>
+<h2>Where the exposed molecules sit</h2>
+<p>The 108 exposed molecules span every major therapeutic class, and the gate differs by class. Respiratory drugs run mostly through Limited Use criteria; oncology and immunology drugs mostly through individual EAP requests.</p>
+<div class="chart-slot" data-chart="classes"></div>
+<p class="chart-source">DPD 2026-09-02, ODB extract 2026-08-26, EAP list 2026-10-05, shortage reports to 2026-09-22 · ATC main group of the first product · Other: blood, musculo-skeletal, various</p>
+<p>Of the 634 restricted markets, 384 show up as restricted only because their drugs are on the Ministry's EAP list; the formulary extract does not list them at all. 45% of those 384 are oncology or immunology drugs. The proportions hold across three ways of drawing a market: 22–23% of single-supplier markets are restricted, 29–32% of those had a reported shortage, and the exposed set runs from 96 to 108 molecules.</p>
+<h2>What the numbers do not say</h2>
+<p>A shortage report is not an empty shelf. Santhireswaran et al. (JAMA Netw Open, 2026) found that 216 of 1,919 reported supply events (11%) were followed by a measurable drop in purchases. Public data cannot tell those apart, so the 187 counts reports meeting a fixed rule, not verified shortages.</p>
+<p>Restriction does not predict shortage, and this memo does not claim it does. The same study found ODB coverage associated with lower odds of shortage. Here, 29% of restricted single-supplier markets carry a qualifying report, against 42% of all single-supplier markets and 90% of multi-supplier ones. Those rates are not comparable: a market with many suppliers has many products able to file a report, and the restricted set is a different mix of drugs.</p>
+<p>The counts are bounded on both sides:</p>
+<ul>
+<li><p>634 and 187 are floors. The Ministry's EAP list covers the most common EAP drugs, not all of them, and 34 Limited Use products keyed by PIN cannot be linked to the DPD.</p></li>
+<li><p>Up to 57 of the 634 restricted markets, and 7 of the 187, may be one market split in two by how a fill volume is recorded. The ODB check under Validation found and merged such splits among listed products; unlisted products could not be checked.</p></li>
+<li><p>"Marketed" is a regulatory status a product keeps through a shortage. Counting dormant products as suppliers lowers the 187 to 178.</p></li>
+</ul>
+<h2>Where the data isn't</h2>
+<p>The three public sources answer who may supply, what the plan requires and what was reported. The questions that follow from the finding need data held elsewhere.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Where the data lives</th>
+<th>Access</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Did a reported shortage empty shelves?</td>
+<td>Wholesale purchase audits (IQVIA MIDAS, used by Santhireswaran et al.)</td>
+<td>Commercial licence</td>
+</tr>
+<tr>
+<td>How many patients take these drugs?</td>
+<td>Public-plan claims (CIHI's National Prescription Drug Utilization Information System)</td>
+<td>By request</td>
+</tr>
+<tr>
+<td>Which drugs are funded only by individual EAP request?</td>
+<td>The Ministry's EAP decisions, beyond its published list</td>
+<td>Not published</td>
+</tr>
+<tr>
+<td>How do private plans restrict them?</td>
+<td>Insurers' and adjudicators' formularies</td>
+<td>Proprietary</td>
+</tr>
+<tr>
+<td>When can a sole supplier expect competition?</td>
+<td>Health Canada's Patent Register and Register of Innovative Drugs</td>
+<td>Public, separate from these sources</td>
+</tr>
+<tr>
+<td>How severe was a shortage?</td>
+<td>Health Canada's Tier 3 designation: 41 of 26,271 reports, none before 2022</td>
+<td>Public, too sparse to use</td>
+</tr>
+</tbody>
+</table></div>
+<p>The public sources have gaps of their own:</p>
+<ul>
+<li><p>Ontario's open-data catalogue points the ODB extract at a host that no longer resolves; the files live at dated ontario.ca addresses.</p></li>
+<li><p>The ODB extract keeps 67 listings for products no longer in Health Canada's registry, and its manufacturer field lags transfers of DINs between companies.</p></li>
+<li><p>The Ministry's own manufacturer list carries "DO NOT USE" on 51 entries and "Manufacturer name not currently available" on 63.</p></li>
+<li><p>The Ministry's EAP list includes 186 DINs that are cancelled or dormant.</p></li>
+</ul>
+<h2>Methods note</h2>
+<p>Every choice that shapes a number was written down, dated, before the result it affects was seen. Six changes were made after a result was seen; they are named below with their direction. Numbered scripts rebuild every figure from the raw files.</p>
+<p>The note names the four counts in the finding by letter:</p>
+<ul>
+<li><p><strong>N</strong>: drug markets marketed in Canada (4,465)</p></li>
+<li><p><strong>A</strong>: of N, those supplied by one company once owners are traced to their parents (2,835)</p></li>
+<li><p><strong>B</strong>: of A, those restricted on the ODB, either Limited Use or reachable only through the EAP (634)</p></li>
+<li><p><strong>C</strong>: of B, those with a shortage report meeting the rule below since 2017 (187)</p></li>
+</ul>
+<h3>Data</h3>
+<ul>
+<li><p>Health Canada Drug Product Database, marketed extract of 2 September 2026: 13,351 products, 11,456 for human use.</p></li>
+<li><p>Ontario Drug Benefit Formulary data extract, Edition 43, created 26 August 2026.</p></li>
+<li><p>Ontario Ministry of Health, EAP drugs with DINs, 5 October 2026 (September 2026 update).</p></li>
+<li><p>Health Product Shortages Canada (formerly Drug Shortages Canada): 26,271 shortage and 3,468 discontinuation reports created from 10 March 2017 to 22 September 2026. The site's unfiltered count matched the exports.</p></li>
+</ul>
+<h3>Rules</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Rule</th>
+<th>Pushes the count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scope</td>
+<td>Human products; products whose only schedule is non-prescription (1,580) and two blood-processing solutions excluded</td>
+<td>N down</td>
+</tr>
+<tr>
+<td>Market</td>
+<td>Ingredient set × dosage form × route × strength, after Zhang et al.; a product with several routes sits in each route's market</td>
+<td>N and A up</td>
+</tr>
+<tr>
+<td>Ingredient</td>
+<td>Salts stripped to the active moiety, except seven brackets that name a different drug (factor VIII and IX forms, flu and measles strains, betamethasone esters)</td>
+<td>A down</td>
+</tr>
+<tr>
+<td>Marketed</td>
+<td>Membership in the DPD's marketed extract; dormant products tested as a sensitivity</td>
+<td>A up</td>
+</tr>
+<tr>
+<td>Supplier</td>
+<td>DIN owner resolved to the ultimate parent with more than 50% voting control or control in fact, as of 2 September 2026; every merge documented and confirmed by hand</td>
+<td>A up (+4)</td>
+</tr>
+<tr>
+<td>Restriction</td>
+<td>Per DIN: Limited Use (Formulary Part XII); EAP (Part III-B), plus DINs on the Ministry's EAP list that the formulary does not list or lists as not a benefit; a market takes the least restrictive tier of its supplier's DINs</td>
+<td>B down (measured: 0)</td>
+</tr>
+<tr>
+<td>Shortage</td>
+<td>A report with an actual start date from 1 January 2017 to the export date, not marked avoided; a market counts if any of its DINs qualifies</td>
+<td>sets C</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Changes made after a result was seen</h3>
+<ul>
+<li><p><strong>Validation ceiling (1 Oct).</strong> The first count, 65.4%, fell outside the 51% ceiling written in advance. That ceiling had omitted Zhang et al.'s biologic row; corrected, it is 65.0%.</p></li>
+<li><p><strong>Spelling splits (1 Oct).</strong> Equivalent form labels (liquid and solution) and bare salt names were merged: A down 133.</p></li>
+<li><p><strong>One product's ingredient (5 Oct).</strong> A dexamethasone injection recorded under the wrong moiety, per its own brand name, was corrected: A down 6.</p></li>
+<li><p><strong>EAP list (6 Oct).</strong> The Ministry's DIN list was folded into B, adding 384 markets. B from the formulary extract alone stays reported below.</p></li>
+<li><p><strong>Products the ODB designates interchangeable (13 Oct).</strong> A check against the ODB's interchangeable categories found 31 single-supplier markets holding a product the DPD records two ways: by fill volume, by strength basis or by an equivalent form label. They were merged: A down 31, B down 9, C down 7.</p></li>
+<li><p><strong>Ownership evidence (13 Oct).</strong> Two Septodont companies with no document naming their parent were un-merged: parent entities 321 to 323; A, B and C unchanged.</p></li>
+</ul>
+<p>The decision register lists every other amendment, each made before the result it affects.</p>
+<h3>Sensitivities</h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Variant</th>
+<th>N, markets</th>
+<th>A, one supplier</th>
+<th>B, restricted</th>
+<th>C, restricted with a shortage report</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Headline</td>
+<td>4,465</td>
+<td>2,835</td>
+<td>634</td>
+<td>187</td>
+</tr>
+<tr>
+<td>Strength dropped from the market</td>
+<td>2,425</td>
+<td>1,490</td>
+<td>343</td>
+<td>110</td>
+</tr>
+<tr>
+<td>A product's routes kept together, not split per route</td>
+<td>4,081</td>
+<td>2,617</td>
+<td>581</td>
+<td>175</td>
+</tr>
+<tr>
+<td>Dormant products counted as suppliers</td>
+<td>4,465</td>
+<td>2,692</td>
+<td>620</td>
+<td>178</td>
+</tr>
+<tr>
+<td>Owners as recorded, no parent resolution</td>
+<td>4,465</td>
+<td>2,831</td>
+<td>634</td>
+<td>187</td>
+</tr>
+<tr>
+<td>B from the formulary extract only</td>
+<td>4,465</td>
+<td>2,835</td>
+<td>250</td>
+<td>113</td>
+</tr>
+</tbody>
+</table></div>
+<p>On the headline B, the shortage rule's variants give C = 208 for any report, 140 for an episode of 30 days or more, 98 for 90 days or more, and 110 for two or more separate episodes.</p>
+<h3>Validation</h3>
+<ul>
+<li><p><strong>Zhang et al.'s market structure</strong> bounds single-supplier markets at 13.1% to 65.0% of all markets. The headline, 63.5%, sits 1.5 points under that ceiling.</p></li>
+<li><p><strong>The ODB's interchangeable categories.</strong> Where the ODB lists two or more marketed products as interchangeable, the market key first put them in one market in 1,111 of 1,145 categories (97.0%). Merging the 31 single-supplier splits it found (above) gives 1,127 (98.4%). Of the 18 categories still split, 12 hold no single-supplier market. Eleven single-supplier markets stay apart from an interchangeable product by design: capsule against tablet, dissolving against plain tablet, and three routes the other product is not approved for. The check reaches only listed products: 810 of the 2,835 single-supplier markets.</p></li>
+<li><p><strong>PMPRB's 307 medicines.</strong> Of the 257 still marketed, the pipeline classes 155 single-supplier. Reading all 102 multi-supplier cases found no supplier wrongly split in two, and two products the market key cannot separate from non-equivalent competitors (Zytram XL, Monoprost).</p></li>
+<li><p><strong>Salts.</strong> Keeping every salt as its own market would raise the single-supplier count by 55; about 7 of those reflect genuinely different salts.</p></li>
+</ul>
+<h2>Sources</h2>
+<ul>
+<li><p>Health Canada, <a href="https://www.canada.ca/en/health-canada/services/drugs-health-products/drug-products/drug-product-database/what-data-extract-drug-product-database.html" target="_blank" rel="noopener">Drug Product Database data extract</a>, extract of 2 September 2026.</p></li>
+<li><p>Ontario Ministry of Health, <a href="https://www.ontario.ca/files/2026-08/moh-ontario-drug-benefit-odb-formulary-edition-43-data-extract-en-2026-08-27.xml" target="_blank" rel="noopener">ODB Formulary data extract, Edition 43</a>, created 26 August 2026.</p></li>
+<li><p>Ontario Ministry of Health, <a href="https://www.ontario.ca/files/2026-09/moh-formulary-edition-43-en-2026-09-03.pdf" target="_blank" rel="noopener">ODB Formulary/Comparative Drug Index, Edition 43</a>, 3 September 2026.</p></li>
+<li><p>Ontario Ministry of Health, <a href="https://ontario.ca/files/2026-10/moh-eap-drug-identification-numbers-list-en-2026-10-05.xlsx" target="_blank" rel="noopener">EAP drugs with Drug Identification Numbers</a>, 5 October 2026, linked from the <a href="https://www.ontario.ca/page/exceptional-access-program" target="_blank" rel="noopener">Exceptional Access Program</a> page.</p></li>
+<li><p>Health Product Shortages Canada (formerly Drug Shortages Canada), <a href="https://healthproductshortages.ca" target="_blank" rel="noopener">shortage and discontinuation reports</a>, exported 22 September 2026.</p></li>
+<li><p>PMPRB, <a href="https://www.canada.ca/en/patented-medicine-prices-review/services/npduis/analytical-studies/formularies-part3-medicines-assessed.html" target="_blank" rel="noopener">Alignment Among Public Formularies in Canada, Part 3: Medicines Assessed by the Common Drug Review</a>, 2022.</p></li>
+<li><p>Zhang et al. CMAJ Open 2020;8(3):E535.</p></li>
+<li><p>Santhireswaran et al. <a href="https://doi.org/10.1001/jamanetworkopen.2026.16632" target="_blank" rel="noopener">JAMA Netw Open 2026;9(6):e2616632</a>.</p></li>
+</ul>
+<p>Contains information licensed under the Open Government Licence – Canada (Health Canada, Drug Product Database) and the Open Government Licence – Ontario (Ontario Drug Benefit Formulary data extract). Exceptional Access Program DIN list © King's Printer for Ontario, 2026; used to derive counts, not reproduced. Shortage and discontinuation reports from Health Product Shortages Canada, exported 22 September 2026. This work is not endorsed by Health Canada or the Ontario Ministry of Health.</p>
+</template>
+
+<script>
+(function () {
+  /* Lens: clinical or strategy. Opens from #clinical or #strategy. */
+  var SETS = {
+    clinical: ['clinical', 'regulatory', 'payer', 'data'],
+    strategy: ['strategy', 'ai', 'payer', 'data']
+  };
+  function validLens(l) { return l === 'clinical' || l === 'strategy'; }
+  function setLens(l) {
+    if (!validLens(l)) return;
+    document.querySelectorAll('[data-for]').forEach(function (el) {
+      el.hidden = el.getAttribute('data-for') !== l;
+    });
+    document.querySelectorAll('button[data-lens]').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-lens') === l));
+    });
+    document.querySelectorAll('.mol [data-d]').forEach(function (el) {
+      el.classList.toggle('on', SETS[l].indexOf(el.getAttribute('data-d')) > -1);
+    });
+    try { localStorage.setItem('js-lens-v2', l); } catch (e) {}
+  }
+
+  /* Reader for the essay and the memo. Opens from #genai-prior-auth or #shortage-memo. */
+  var PIECES = {
+    'genai-prior-auth': { kind: 'Essay · Sep 18, 2026 · 8 min', title: 'What Actually Breaks When You Put GenAI into Prior Authorization', byline: 'Jatin Saini' },
+    'shortage-memo': { kind: 'Policy memo · Oct 13, 2026 · 10 min', title: 'Where a drug shortage meets a prior authorization', byline: 'Jatin Saini, PharmD' }
+  };
+  var reader = document.getElementById('reader');
+  var scrollEl = document.getElementById('reader-scroll');
+  var contentEl = document.getElementById('reader-content');
+  var closeBtn = document.getElementById('reader-close');
+  var lastFocus = null;
+
+  function openReader(id) {
+    var p = PIECES[id], tpl = document.getElementById('tpl-' + id);
+    if (!p || !tpl) return;
+    document.getElementById('reader-kind').textContent = p.kind;
+    document.getElementById('reader-title').textContent = p.title;
+    document.getElementById('reader-byline').textContent = p.byline;
+    var frag = tpl.content.cloneNode(true);
+    frag.querySelectorAll('[data-chart]').forEach(function (slot) {
+      var src = document.getElementById('chart-' + slot.getAttribute('data-chart'));
+      if (src) {
+        var c = src.cloneNode(true);
+        c.removeAttribute('id');
+        slot.appendChild(c);
+      }
+    });
+    while (contentEl.firstChild) contentEl.removeChild(contentEl.firstChild);
+    contentEl.appendChild(frag);
+    lastFocus = document.activeElement;
+    if (!reader.open) {
+      try { reader.showModal(); } catch (e) { reader.setAttribute('open', ''); }
+    }
+    scrollEl.scrollTop = 0;
+    closeBtn.focus();
+  }
+  function closeReader() {
+    if (!reader.open) return;
+    if (typeof reader.close === 'function') reader.close(); else reader.removeAttribute('open');
+  }
+  reader.addEventListener('close', function () {
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  });
+  closeBtn.addEventListener('click', closeReader);
+  document.getElementById('reader-close-2').addEventListener('click', closeReader);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && reader.open) closeReader();
+  });
+
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest) return;
+    var b = e.target.closest('button[data-lens]');
+    if (b) { setLens(b.getAttribute('data-lens')); return; }
+    var o = e.target.closest('[data-open]');
+    if (o) openReader(o.getAttribute('data-open'));
+  });
+
+  function fromHash() {
+    var h = (location.hash || '').slice(1);
+    if (validLens(h)) { setLens(h); return true; }
+    if (PIECES[h]) { openReader(h); return true; }
+    return false;
+  }
+  var stored = '';
+  try { stored = localStorage.getItem('js-lens-v2') || ''; } catch (e) { stored = ''; }
+  setLens(validLens(stored) ? stored : 'clinical');
+  fromHash();
+  window.addEventListener('hashchange', fromHash);
+
+  /* Copy email */
+  var copyBtn = document.getElementById('copy-email');
+  var emailEl = document.getElementById('email-text');
+  var resetTimer = 0;
+  function flash(msg) {
+    copyBtn.textContent = msg;
+    clearTimeout(resetTimer);
+    resetTimer = setTimeout(function () { copyBtn.textContent = 'Copy'; }, 2000);
+  }
+  function selectEmail() {
+    var range = document.createRange();
+    range.selectNodeContents(emailEl);
+    var sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+    flash('Selected');
+  }
+  copyBtn.addEventListener('click', function () {
+    var text = emailEl.textContent.trim();
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { flash('Copied'); }, selectEmail);
+    } else {
+      selectEmail();
+    }
+  });
+})();
+
+(function () {
+  /* Particle orb: a rotating Fibonacci sphere, teal at the back, aqua-to-orchid at the front, with a few molecular bonds. */
+  var canvas = document.getElementById('orb');
+  if (!canvas || !canvas.getContext) return;
+  var hero = canvas.parentElement;
+  var ctx = canvas.getContext('2d');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var TEAL = [0, 130, 124], AQUA = [203, 255, 252], MIST = [237, 255, 254], ORCHID = [250, 209, 255];
+
+  var pts = [], bonds = [], proj = [];
+  var w = 0, h = 0, R = 0, cx = 0, cy = 0;
+  var rotY = 0.6, tiltX = -0.32, mx = 0, my = 0, tmx = 0, tmy = 0;
+  var running = false, inView = true, raf = 0, prev = 0, lastT = 0;
+
+  function mix(a, b, t) {
+    return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t];
+  }
+
+  function build(n) {
+    pts = [];
+    var g = Math.PI * (3 - Math.sqrt(5));
+    for (var i = 0; i < n; i++) {
+      var y = 1 - (i / (n - 1)) * 2;
+      var r = Math.sqrt(1 - y * y);
+      var th = g * i;
+      var j = 1 + (Math.random() - 0.5) * 0.05;
+      pts.push({ x: Math.cos(th) * r * j, y: y * j, z: Math.sin(th) * r * j, s: Math.random() });
+    }
+    bonds = [];
+    var count = Math.round(n / 16);
+    for (var k = 0; k < count; k++) {
+      var a = (Math.random() * n) | 0;
+      var best = -1, second = -1, bd = 1e9, sd = 1e9;
+      for (var b = 0; b < n; b++) {
+        if (b === a) continue;
+        var dx = pts[a].x - pts[b].x, dy = pts[a].y - pts[b].y, dz = pts[a].z - pts[b].z;
+        var d = dx * dx + dy * dy + dz * dz;
+        if (d < bd) { second = best; sd = bd; best = b; bd = d; }
+        else if (d < sd) { second = b; sd = d; }
+      }
+      if (best > -1) bonds.push([a, best]);
+      if (second > -1 && Math.random() > 0.4) bonds.push([a, second]);
+    }
+    proj = new Array(n);
+  }
+
+  function resize() {
+    var rect = hero.getBoundingClientRect();
+    w = rect.width; h = rect.height;
+    if (!w || !h) return;
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = Math.round(w * dpr);
+    canvas.height = Math.round(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    R = Math.min(w * 0.46, h * 0.44, 420);
+    cx = w / 2; cy = h * 0.5;
+    var n = w < 700 ? 700 : 1300;
+    if (pts.length !== n) build(n);
+    if (!running) draw(lastT);
+  }
+
+  function draw(t) {
+    if (!w || !h || !pts.length) return;
+    ctx.clearRect(0, 0, w, h);
+    mx += (tmx - mx) * 0.04;
+    my += (tmy - my) * 0.04;
+    var ay = rotY + mx * 0.5, ax = tiltX + my * 0.25;
+    var cY = Math.cos(ay), sY = Math.sin(ay), cX = Math.cos(ax), sX = Math.sin(ax);
+    var i, p;
+    for (i = 0; i < pts.length; i++) {
+      p = pts[i];
+      var br = reduce ? 1 : 1 + 0.015 * Math.sin(t * 0.0012 + p.s * 12);
+      var x1 = p.x * cY - p.z * sY;
+      var z1 = p.x * sY + p.z * cY;
+      var y2 = p.y * cX - z1 * sX;
+      var z2 = p.y * sX + z1 * cX;
+      var persp = 3 / (3 - z2);
+      proj[i] = [cx + x1 * R * br * persp, cy + y2 * R * br * persp, z2, x1];
+    }
+    ctx.lineWidth = 0.8;
+    for (i = 0; i < bonds.length; i++) {
+      var A = proj[bonds[i][0]], B = proj[bonds[i][1]];
+      var dep = ((A[2] + B[2]) / 2 + 1) / 2;
+      if (dep < 0.5) continue;
+      ctx.strokeStyle = 'rgba(203,255,252,' + ((dep - 0.5) * 0.55).toFixed(3) + ')';
+      ctx.beginPath();
+      ctx.moveTo(A[0], A[1]);
+      ctx.lineTo(B[0], B[1]);
+      ctx.stroke();
+    }
+    for (i = 0; i < proj.length; i++) {
+      var q = proj[i];
+      var d = (q[2] + 1) / 2;
+      var side = (q[3] + 1) / 2;
+      var front = mix(mix(AQUA, ORCHID, side), MIST, 0.3);
+      var col = mix(TEAL, front, Math.pow(d, 1.2));
+      var rim = Math.pow(1 - Math.abs(q[2]), 6);
+      col = mix(col, ORCHID, rim * 0.55 * side);
+      var tw = reduce ? 1 : 0.8 + 0.2 * Math.sin(t * 0.002 + pts[i].s * 40);
+      var alpha = (0.1 + 0.8 * Math.pow(d, 1.6)) * tw;
+      var size = 0.55 + 1.5 * d;
+      ctx.fillStyle = 'rgba(' + (col[0] | 0) + ',' + (col[1] | 0) + ',' + (col[2] | 0) + ',' + alpha.toFixed(3) + ')';
+      ctx.beginPath();
+      ctx.arc(q[0], q[1], size, 0, 6.2832);
+      ctx.fill();
+    }
+  }
+
+  function loop(t) {
+    var dt = prev ? Math.min(t - prev, 50) : 16;
+    prev = t; lastT = t;
+    rotY += dt * 0.00012;
+    draw(t);
+    raf = requestAnimationFrame(loop);
+  }
+  function start() {
+    if (running || reduce || !inView || document.hidden) return;
+    running = true; prev = 0;
+    raf = requestAnimationFrame(loop);
+  }
+  function stop() {
+    running = false;
+    cancelAnimationFrame(raf);
+  }
+
+  if (!reduce) {
+    hero.addEventListener('pointermove', function (e) {
+      var r = hero.getBoundingClientRect();
+      tmx = ((e.clientX - r.left) / r.width - 0.5) * 2;
+      tmy = ((e.clientY - r.top) / r.height - 0.5) * 2;
+    });
+    hero.addEventListener('pointerleave', function () { tmx = 0; tmy = 0; });
+  }
+
+  if ('ResizeObserver' in window) {
+    new ResizeObserver(resize).observe(hero);
+  } else {
+    window.addEventListener('resize', resize);
+  }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      inView = entries[0].isIntersecting;
+      if (inView) start(); else stop();
+    }).observe(hero);
+  }
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) stop(); else start();
+  });
+
+  resize();
+  draw(0);
+  start();
+})();
+</script>
+
+</body>
+</html>
