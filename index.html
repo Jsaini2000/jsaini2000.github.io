@@ -220,6 +220,35 @@ section[id],footer[id]{scroll-margin-top:16px}
 .case-foot{border-top:1px solid var(--line);padding-top:24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 24px}
 .case-foot-title{display:block;margin-top:6px;color:var(--platinum);font-size:18px;font-weight:500;line-height:1.35}
 
+.seg.fb-open,.sw.fb-open{background:var(--silver)}
+.seg.fb-plan,.sw.fb-plan{background:var(--teal-lit)}
+.seg.fb-switch,.sw.fb-switch{background:var(--phosphor)}
+
+/* Retro cases, partners, decision, lessons */
+.retro{display:flex;flex-direction:column;gap:18px}
+.retro-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.retro-card{background:var(--abyss);border-radius:var(--r-card);padding:clamp(20px,2.5vw,28px);display:flex;flex-direction:column;gap:8px;min-width:0}
+.retro-card h3{font-size:var(--fs-h3);line-height:1.2;letter-spacing:-.02em}
+.retro-mol{font-size:var(--fs-small);color:var(--silver)}
+.retro-num{margin-top:10px;font-size:clamp(40px,4.4vw,56px);line-height:1;letter-spacing:-.04em;color:var(--phosphor);font-weight:500;font-variant-numeric:tabular-nums;display:flex;align-items:baseline;gap:.14em;white-space:nowrap}
+.retro-num .stat-unit{font-size:.3em}
+.retro-body{font-size:var(--fs-small);line-height:1.5;color:var(--mist)}
+@media (max-width:900px){.retro-grid{grid-template-columns:1fr}}
+.buyers{margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.buyers > div{background:var(--abyss);border-radius:var(--r-card);padding:clamp(20px,2.5vw,28px);display:flex;flex-direction:column;gap:10px;min-width:0}
+.buyers dt{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--silver);line-height:1.4}
+.buyers dd{margin:0;display:flex;flex-direction:column;gap:12px;color:var(--mist);line-height:1.5}
+.buyers-change{border-top:1px solid var(--line);padding-top:12px;color:var(--platinum)}
+@media (max-width:760px){.buyers{grid-template-columns:1fr}}
+.decision{display:flex;flex-direction:column;gap:12px}
+.decision p:not(.big){max-width:60ch}
+.lessons{display:flex;flex-direction:column;gap:16px}
+.lesson-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.lesson-list li{border-top:1px solid var(--line);padding-top:16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.lesson-list h3{font-size:18px;line-height:1.3;letter-spacing:-.01em}
+.lesson-list p{font-size:var(--fs-small);line-height:1.5}
+@media (max-width:900px){.lesson-list{grid-template-columns:1fr;gap:16px}}
+
 /* Funnel */
 .funnel{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:26px}
 .f-row{display:grid;grid-template-columns:clamp(76px,13vw,150px) minmax(0,1fr);gap:clamp(14px,2vw,24px);align-items:start}
@@ -485,11 +514,11 @@ a.contact-val:hover{text-decoration:underline;text-underline-offset:4px}
         </li>
         <li class="row">
           <div>
-            <p class="row-src">From the memo</p>
-            <h3>Restriction is the unmeasured layer</h3>
-            <p class="row-body">Earlier studies measured whether drugs are listed. The memo counts restricted tiers inside single-supplier markets, and maps where the data to go further is held.</p>
+            <p class="row-src">From Access Fragility</p>
+            <h3>Find the buyer before the build</h3>
+            <p class="row-body">Two partner conversations showed the technology existed and the business case to payers did not. I stopped the build on that evidence.</p>
           </div>
-          <button type="button" class="arrow-btn" data-open="shortage-memo" aria-label="Read the memo on drug shortages and prior authorization"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+          <a class="arrow-btn" href="#access" aria-label="See the Access Fragility case"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></a>
         </li>
       </ul>
     </div>
@@ -637,10 +666,10 @@ a.contact-val:hover{text-decoration:underline;text-underline-offset:4px}
     <article class="card case">
       <header class="case-head">
         <div>
-          <p class="eyebrow">Research &middot; Independent &middot; Sep 2026 &ndash; now</p>
-          <h2>Where a drug shortage meets a prior authorization.</h2>
+          <p class="eyebrow">Research &middot; Independent &middot; Sep &ndash; Oct 2026 &middot; Complete</p>
+          <h2>Access Fragility: where a drug shortage meets a prior authorization.</h2>
         </div>
-        <p class="case-intro">A Canada-wide dataset that crosses supply concentration with what a prescriber must do to get a drug dispensed on Ontario&rsquo;s public plan. <b>Every choice that shapes a number was written down before the result it affects was seen.</b></p>
+        <p class="case-intro">I wanted to know what happens when a drug has one supplier, sits behind a coverage restriction, and then has a shortage report. I built the dataset from public data, turned it into a product concept, tested it with two potential partners, and <b>stopped when the evidence said the open question was who pays.</b></p>
       </header>
 
       <div>
@@ -705,11 +734,91 @@ a.contact-val:hover{text-decoration:underline;text-underline-offset:4px}
         </ol>
       </figure>
 
+      <div class="intake">
+        <div>
+          <p class="block-title">Does another strength of the same drug settle it?</p>
+          <p class="block-sub">All 187 markets, by what a shortage alert would tell the plan to do</p>
+        </div>
+        <div class="stack" role="img" aria-label="17 markets have an open same-molecule fallback, 94 need the plan to act on its own formulary, and 76 need a different drug.">
+          <span class="seg fb-open" style="--w:9.09%"></span><span class="seg fb-plan" style="--w:50.27%"></span><span class="seg fb-switch" style="--w:40.64%"></span>
+        </div>
+        <ul class="legend">
+          <li><i class="sw fb-open"></i>17: another strength settles it, or nearly</li>
+          <li><i class="sw fb-plan"></i>94: the plan can act, with temporary relief or a temporary benefit</li>
+          <li><i class="sw fb-switch"></i>76: needs a different drug, by class switch or import</li>
+        </ul>
+        <p class="readout"><b>177 of 187</b> markets have no same-molecule fallback that is both open on the ODB and free of a shortage report in the same window.</p>
+      </div>
+
+      <div class="retro">
+        <div>
+          <p class="block-title">Three retro cases</p>
+          <p class="block-sub">Real shortage reports replayed against the formulary. All three drugs are EAP-only on the ODB.</p>
+        </div>
+        <ul class="retro-grid">
+          <li class="retro-card">
+            <p class="step-n">Nothing equivalent marketed</p>
+            <h3>Pegasys</h3>
+            <p class="retro-mol">peginterferon alfa-2a 180 mcg</p>
+            <p class="retro-num">101<span class="stat-unit">days</span></p>
+            <p class="retro-body">From the shortage report to Health Canada listing an imported substitute. It arrived without a DIN, and Ontario reaches it only by case-by-case review.</p>
+          </li>
+          <li class="retro-card">
+            <p class="step-n">The alternative is gated too</p>
+            <h3>Kevzara</h3>
+            <p class="retro-mol">sarilumab 150 mg</p>
+            <p class="retro-num">434<span class="stat-unit">days</span></p>
+            <p class="retro-body">From the EU publishing a shortage to the Canadian episode. The closest alternative, tocilizumab, was also EAP-only at the time.</p>
+          </li>
+          <li class="retro-card">
+            <p class="step-n">Control</p>
+            <h3>Hydromorph Contin</h3>
+            <p class="retro-mol">hydromorphone CR 24 mg</p>
+            <p class="retro-num">2&times;12<span class="stat-unit">mg</span></p>
+            <p class="retro-body">The right alert said to do nothing about coverage. The 24 mg restriction exists for opioid safety, and two 12 mg capsules stayed covered.</p>
+          </li>
+        </ul>
+      </div>
+
+      <div class="retro">
+        <div>
+          <p class="block-title">Testing it with potential partners</p>
+          <p class="block-sub">Two conversations moved the project from a dataset to a business question</p>
+        </div>
+        <dl class="buyers">
+          <div>
+            <dt>A health-tech CEO, as mentor</dt>
+            <dd><p>Asked where the action was, then whether this was a painkiller or a vitamin for the buyer.</p><p class="buyers-change">I redesigned it as signal, then formulary exposure, then an action the plan can take.</p></dd>
+          </div>
+          <div>
+            <dt>Co-founder of a university shortage-forecasting startup</dt>
+            <dd><p>They already had the action step and could take in a plan&rsquo;s formulary, but had pitched insurers with little success.</p><p class="buyers-change">The gap was not technology. It was the business case to payers.</p></dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="insight">
+        <p class="eyebrow">The decision</p>
+        <div class="decision">
+          <p class="big">I stopped the build. The open question was <b>who pays</b>, and more code could not answer it.</p>
+          <p>The partner already had the technology, so building more would have duplicated it. I kept the evidence, the method and a working relationship with the founder.</p>
+        </div>
+      </div>
+
+      <div class="lessons">
+        <p class="eyebrow">What I learned</p>
+        <ul class="lesson-list">
+          <li><h3>Start from the buyer&rsquo;s pain</h3><p>I spent weeks on a rigorous dataset before asking who would pay. Next time the customer conversation comes first.</p></li>
+          <li><h3>Pitch to whoever carries the cost</h3><p>A tool that looks like it replaces someone&rsquo;s work meets that person&rsquo;s resistance.</p></li>
+          <li><h3>Stopping is a decision</h3><p>A clear stop, made on evidence, beats a half-finished product.</p></li>
+        </ul>
+      </div>
+
       <dl class="facts">
+        <div><dt>Data</dt><dd>Health Canada DPD, ODB Formulary Edition 43, Ontario&rsquo;s EAP DIN list, Drug Shortages Canada, linked at ingredient, form, route and strength</dd></div>
+        <div><dt>Method</dt><dd>336 licence holders resolved to <b>323</b> parent companies. Every number comes from a re-runnable script with rules written down before each run</dd></div>
         <div><dt>Robustness</dt><dd><b>22&ndash;23%</b> restricted and <b>29&ndash;32%</b> with a shortage report, across three ways of drawing a market</dd></div>
-        <div><dt>Limits</dt><dd>A shortage report is not an empty shelf. <b>634</b> and <b>187</b> are floors, and restriction does not predict shortage</dd></div>
-        <div><dt>Sources</dt><dd>Health Canada DPD, ODB Formulary Edition 43, Ontario&rsquo;s EAP DIN list, Health Product Shortages Canada</dd></div>
-        <div><dt>Next</dt><dd>Testing a US rebuild on the FDA shortage list, NDC Directory, CMS Part D formularies and RxNorm</dd></div>
+        <div><dt>Limits</dt><dd>A shortage report is not an empty shelf. Fallbacks are candidates for clinical review, not recommendations. Ontario&rsquo;s Pegasys coverage date is inferred</dd></div>
       </dl>
 
       <footer class="case-foot">
@@ -756,13 +865,14 @@ a.contact-val:hover{text-decoration:underline;text-underline-offset:4px}
     </div>
     <ol class="timeline">
       <li class="job">
-        <div class="job-when"><span>Sep 2026 &ndash; Now</span><span class="pill">Current</span></div>
+        <div class="job-when"><span>Sep &ndash; Oct 2026</span><span class="pill">Complete</span></div>
         <div>
           <h3>Independent Researcher, Access Fragility</h3>
           <p class="job-org">Drug shortages &times; coverage restrictions &middot; Toronto, ON</p>
           <ul>
             <li>Built a Canada-wide dataset of 4,465 drug markets from public sources, resolving 336 licence holders to 323 parent companies to find true single-supplier markets.</li>
-            <li>Published a policy memo in October 2026. Now testing whether the method rebuilds on US public data.</li>
+            <li>Found 187 restricted single-supplier markets with a shortage report; for 177, the same-molecule fallback was also gated, uncovered, missing or short. Published as a policy memo.</li>
+            <li>Tested the product concept with a health-tech CEO and a shortage-forecasting startup, then stopped the build when the open question proved to be who pays.</li>
           </ul>
         </div>
       </li>
